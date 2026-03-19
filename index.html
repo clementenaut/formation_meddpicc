@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation MEDDPICC — Sales Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Palette officielle */
+  --arc-navy:#0C2762;
+  --arc-blue:#1659E4;
+  --arc-teal:#6BE7DD;
+  --arc-coral:#FA7B4E;
+  --arc-yellow:#F1C557;
+
+  /* Fond clair */
+  --bg:#f0f4fb;--bg2:#ffffff;--bg3:#f7f9fd;--bg4:#e8eef8;
+  --border:rgba(12,39,98,.1);
+
+  /* Accent principal */
+  --blue:#1659E4;--blue2:#3a7af0;--blue-dim:rgba(22,89,228,.08);
+
+  /* Statuts */
+  --green:#16a34a;--green-dim:rgba(22,163,74,.08);
+  --amber:#d97706;--amber-dim:rgba(217,119,6,.08);
+  --red:#dc2626;--red-dim:rgba(220,38,38,.07);
+  --purple:#FA7B4E;--purple-dim:rgba(250,123,78,.1);
+
+  /* Texte */
+  --text:#0C2762;--text-muted:#3d5a8a;--text-dim:#8ea6c8;
+
+  --sidebar:272px;
+  --radius:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);display:flex;min-height:100vh;font-size:14.5px;line-height:1.7;}
+
+/* ── SIDEBAR ─────────────────────────────────── */
+#sidebar{
+  width:var(--sidebar);height:100vh;background:#0C2762;
+  border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;
+  position:fixed;top:0;left:0;z-index:100;overflow-y:auto;
+}
+.sb-top{padding:20px 18px 16px;border-bottom:1px solid var(--border);}
+.sb-brand{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6BE7DD;font-family:'Outfit',sans-serif;margin-bottom:3px;}
+.sb-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:#ffffff;line-height:1.3;}
+.sb-prog-wrap{padding:12px 18px 14px;border-bottom:1px solid var(--border);}
+.prog-row{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(255,255,255,.45);margin-bottom:6px;}
+.prog-track{height:2px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,#1659E4,#6BE7DD);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.sb-nav{flex:1;padding:8px 10px 24px;}
+.sb-section-lbl{font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.25);padding:14px 8px 5px;}
+.nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;margin-bottom:1px;transition:all .18s;border:1px solid transparent;}
+.nav-item:hover{background:rgba(255,255,255,.07);}
+.nav-item.active{background:rgba(22,89,228,.25);border-color:rgba(107,231,221,.3);}
+.nav-dot{width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;transition:all .3s;color:rgba(255,255,255,.45);}
+.nav-item.active .nav-dot{border-color:#6BE7DD;color:#6BE7DD;}
+.nav-item.done .nav-dot{background:#16a34a;border-color:#16a34a;color:#fff;}
+.nav-item.done .nav-dot::after{content:'✓';}
+.nav-text{flex:1;min-width:0;}
+.nav-sub{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:rgba(255,255,255,.35);line-height:1;}
+.nav-item.active .nav-sub{color:#6BE7DD;}
+.nav-name{font-size:12px;font-weight:500;color:rgba(255,255,255,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-item.active .nav-name,.nav-item.done .nav-name{color:#ffffff;}
+
+/* ── MAIN ────────────────────────────────────── */
+#main{margin-left:var(--sidebar);flex:1;}
+.page{max-width:740px;margin:0 auto;padding:44px 32px 100px;animation:fadeIn .35s ease;}
+
+/* ── PAGE HEADER ──────────────────────────────── */
+.mod-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(22,89,228,.07);border:1px solid rgba(22,89,228,.2);border-radius:20px;padding:3px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--blue);margin-bottom:12px;}
+.page-h1{font-family:'Outfit',sans-serif;font-size:32px;font-weight:900;line-height:1.15;margin-bottom:10px;background:linear-gradient(140deg,#0C2762 0%,#1659E4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-sub{font-size:14.5px;color:var(--text-muted);max-width:580px;line-height:1.8;margin-bottom:36px;border-bottom:1px solid var(--border);padding-bottom:28px;}
+
+/* ── SECTION ──────────────────────────────────── */
+.sec{margin-bottom:28px;}
+.sec-h{font-family:'Outfit',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-h::before{content:'';width:3px;height:17px;background:var(--blue);border-radius:2px;flex-shrink:0;}
+.prose{font-size:14px;color:var(--text-muted);line-height:1.9;}
+.prose p{margin-bottom:12px;}
+.prose p:last-child{margin-bottom:0;}
+.prose strong,.prose b{color:var(--text);font-weight:500;}
+.prose em{color:var(--blue2);}
+
+/* ── CARDS ────────────────────────────────────── */
+.card-row{display:grid;gap:8px;margin:4px 0;}
+.card-row.c2{grid-template-columns:1fr 1fr;}
+.card-row.c3{grid-template-columns:repeat(3,1fr);}
+.card{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);padding:16px 18px;box-shadow:0 1px 4px rgba(12,39,98,.06);}
+.card-ico{font-size:18px;margin-bottom:7px;}
+.card-name{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:5px;}
+.card p{font-size:12.5px;color:var(--text-muted);line-height:1.7;}
+
+/* ── HIGHLIGHTS ───────────────────────────────── */
+.hl{border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;border-left:3px solid;}
+.hl.blue{background:var(--blue-dim);border-color:var(--blue);}
+.hl.green{background:var(--green-dim);border-color:var(--green);}
+.hl.amber{background:var(--amber-dim);border-color:var(--amber);}
+.hl.red{background:var(--red-dim);border-color:var(--red);}
+.hl.purple{background:var(--purple-dim);border-color:var(--purple);}
+.hl-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
+.hl.blue .hl-label{color:var(--blue);}
+.hl.green .hl-label{color:var(--green);}
+.hl.amber .hl-label{color:var(--amber);}
+.hl.red .hl-label{color:var(--red);}
+.hl.purple .hl-label{color:var(--purple);}
+.hl p,.hl-body{font-size:13.5px;line-height:1.85;color:var(--text-muted);}
+.hl p strong,.hl-body strong{color:var(--text);}
+
+/* ── SCENARIO ─────────────────────────────────── */
+.scenario{background:#eef6ff;border:1px solid rgba(22,89,228,.15);border-radius:var(--radius);overflow:hidden;margin-bottom:22px;}
+.scen-head{padding:9px 18px;background:rgba(22,89,228,.08);border-bottom:1px solid rgba(22,89,228,.12);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);}
+.scen-body{padding:16px 20px;font-size:13.5px;color:var(--text-muted);line-height:1.85;}
+.scen-body p{margin-bottom:9px;}
+.scen-body p:last-child{margin-bottom:0;}
+
+/* ── LIST ─────────────────────────────────────── */
+.slist{list-style:none;margin:6px 0;}
+.slist li{display:flex;align-items:flex-start;gap:8px;padding:7px 0;font-size:13.5px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.035);line-height:1.7;}
+.slist li:last-child{border-bottom:none;}
+.ldot{width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0;margin-top:9px;}
+.slist b{color:var(--text);font-weight:500;}
+
+/* ── QUESTIONS ────────────────────────────────── */
+.q-grid{display:grid;gap:6px;margin:10px 0;}
+.q-item{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:8px;padding:10px 14px;font-size:13.5px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;line-height:1.65;}
+.q-ico{width:19px;height:19px;background:rgba(22,89,228,.08);color:#1659E4;border-radius:4px;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+
+/* ── MEDDPICC MAP ─────────────────────────────── */
+.mmap{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:16px 0;}
+.mm-item{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);padding:13px 8px;text-align:center;transition:all .18s;cursor:default;}
+.mm-letter{font-family:'Outfit',sans-serif;font-size:24px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:3px;}
+.mm-word{font-size:9.5px;color:var(--text-dim);font-weight:500;line-height:1.3;}
+
+/* ── RAG SCORING ──────────────────────────────── */
+.rag{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0;}
+.rag-c{border-radius:var(--radius);padding:13px;text-align:center;}
+.rag-c.g{background:var(--green-dim);border:1px solid rgba(34,197,94,.2);}
+.rag-c.a{background:var(--amber-dim);border:1px solid rgba(245,158,11,.2);}
+.rag-c.r{background:var(--red-dim);border:1px solid rgba(248,113,113,.2);}
+.rag-c.u{background:var(--bg3);border:1px solid var(--border);}
+.rag-dot{width:16px;height:16px;border-radius:50%;margin:0 auto 6px;}
+.rag-c.g .rag-dot{background:var(--green);}
+.rag-c.a .rag-dot{background:var(--amber);}
+.rag-c.r .rag-dot{background:var(--red);}
+.rag-c.u .rag-dot{background:var(--text-dim);}
+.rag-lbl{font-size:11px;font-weight:700;}
+.rag-c.g .rag-lbl{color:var(--green);}
+.rag-c.a .rag-lbl{color:var(--amber);}
+.rag-c.r .rag-lbl{color:var(--red);}
+.rag-c.u .rag-lbl{color:var(--text-dim);}
+.rag-desc{font-size:10px;color:var(--text-dim);margin-top:3px;line-height:1.4;}
+
+/* ── EXPANDABLE ───────────────────────────────── */
+.expd{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);overflow:hidden;margin-bottom:6px;}
+.expd-hdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--text);transition:background .15s;}
+.expd-hdr:hover{background:#f0f4fb;}
+.expd-arr{color:var(--text-dim);font-size:10px;transition:transform .3s;}
+.expd.open .expd-arr{transform:rotate(180deg);}
+.expd-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.expd.open .expd-body{max-height:600px;}
+.expd-inner{padding:13px 16px;border-top:1px solid var(--border);font-size:13.5px;color:var(--text-muted);line-height:1.85;}
+
+/* ── TABLE ────────────────────────────────────── */
+.tbl{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+.tbl th{text-align:left;padding:8px 12px;background:#e8eef8;color:var(--text-muted);font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;border-bottom:1px solid var(--border);}
+.tbl td{padding:9px 12px;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.65;}
+.tbl tr:hover td{background:var(--bg3);}
+
+/* ── QUIZ ─────────────────────────────────────── */
+.quiz-section{margin-top:48px;padding-top:32px;border-top:1px solid var(--border);}
+.quiz-header{margin-bottom:24px;}
+.quiz-header h2{font-family:'Outfit',sans-serif;font-size:19px;font-weight:700;margin-bottom:5px;}
+.quiz-header p{color:var(--text-muted);font-size:13px;}
+.qq{background:#ffffff;border:1.5px solid rgba(12,39,98,.1);border-radius:12px;padding:20px;margin-bottom:12px;transition:border-color .25s;box-shadow:0 1px 4px rgba(12,39,98,.05);}
+.qq.ok{border-color:var(--green);}
+.qq.ko{border-color:var(--red);}
+.qq-num{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;}
+.qq-q{font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:var(--text);margin-bottom:14px;line-height:1.55;}
+.qq-opts{display:grid;gap:6px;}
+.qq-opt{background:#f0f4fb;border:1.5px solid rgba(12,39,98,.08);border-radius:8px;padding:10px 14px;font-size:13.5px;color:var(--text-muted);cursor:pointer;transition:all .18s;text-align:left;display:flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;width:100%;}
+.qq-opt:hover:not(:disabled){border-color:var(--blue);color:var(--text);background:var(--blue-dim);}
+.qq-opt:disabled{cursor:default;}
+.qq-opt.correct{border-color:var(--green);background:var(--green-dim);color:var(--text);}
+.qq-opt.wrong{border-color:var(--red);background:var(--red-dim);color:var(--text);}
+.qq-opt.reveal{border-color:var(--green);background:var(--green-dim);color:var(--text);}
+.opt-badge{width:22px;height:22px;border-radius:5px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--text-dim);flex-shrink:0;transition:all .2s;}
+.correct .opt-badge{background:var(--green);color:#fff;}
+.wrong .opt-badge{background:var(--red);color:#fff;}
+.reveal .opt-badge{background:var(--green);color:#fff;}
+.qq-expl{margin-top:10px;padding:11px 14px;background:var(--bg);border-radius:7px;border-left:3px solid var(--blue);font-size:13px;color:var(--text-muted);line-height:1.8;display:none;}
+.qq-expl.show{display:block;animation:fadeIn .25s ease;}
+.quiz-result{text-align:center;padding:28px;background:#ffffff;border-radius:12px;border:1px solid rgba(12,39,98,.1);margin-top:18px;animation:fadeIn .4s ease;}
+.result-score{font-family:'Outfit',sans-serif;font-size:50px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:5px;}
+.result-lbl{color:var(--text-muted);font-size:13px;margin-bottom:20px;}
+
+/* ── NAVIGATION BUTTONS ───────────────────────── */
+.page-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:22px;border-top:1px solid var(--border);}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer;border:none;transition:all .18s;font-family:'DM Sans',sans-serif;}
+.btn-p{background:var(--blue);color:#fff;}
+.btn-p:hover{background:#0d40c2;transform:translateY(-1px);}
+.btn-s{background:var(--bg3);color:var(--text-muted);border:1px solid var(--border);}
+.btn-s:hover{color:var(--text);border-color:var(--blue);}
+
+/* ── WELCOME PAGE ─────────────────────────────── */
+.welcome-wrap{padding:52px 32px;max-width:660px;margin:0 auto;animation:fadeIn .5s ease;}
+.w-label{display:inline-flex;align-items:center;gap:5px;background:rgba(22,89,228,.07);border:1px solid rgba(22,89,228,.2);border-radius:20px;padding:4px 13px;font-size:9.5px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;}
+.w-h1{font-family:'Outfit',sans-serif;font-size:40px;font-weight:900;line-height:1.1;margin-bottom:16px;background:linear-gradient(140deg,#0C2762 0%,#1659E4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.w-desc{font-size:14.5px;color:var(--text-muted);line-height:1.85;margin-bottom:28px;max-width:520px;}
+.w-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:28px;}
+.stat-box{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);padding:14px;text-align:center;}
+.stat-v{font-family:'Outfit',sans-serif;font-size:24px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:4px;}
+.stat-l{font-size:11px;color:var(--text-dim);}
+.w-modules{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:28px;}
+.wm-item{background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:flex-start;gap:11px;}
+.wm-letter{font-family:'Outfit',sans-serif;font-size:22px;font-weight:900;color:var(--blue);width:28px;flex-shrink:0;line-height:1;}
+.wm-text{}
+.wm-name{font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.wm-desc{font-size:11.5px;color:var(--text-dim);line-height:1.5;}
+
+/* ── SCORECARD MODULE ─────────────────────────── */
+.sc-row{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.sc-row:last-child{border-bottom:none;}
+.sc-l{font-family:'Outfit',sans-serif;font-size:20px;font-weight:900;color:var(--blue);text-align:center;padding-top:1px;}
+.sc-content{}
+.sc-content strong{font-size:13px;color:var(--text);font-weight:500;display:block;margin-bottom:2px;}
+.sc-content span{font-size:12.5px;color:var(--text-muted);}
+.sc-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:5px;font-size:10.5px;font-weight:700;white-space:nowrap;}
+.sc-pill.g{background:var(--green-dim);color:var(--green);border:1px solid rgba(34,197,94,.2);}
+.sc-pill.a{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,158,11,.2);}
+.sc-pill.r{background:var(--red-dim);color:var(--red);border:1px solid rgba(248,113,113,.2);}
+.sc-pill.u{background:var(--bg3);color:var(--text-dim);border:1px solid var(--border);}
+
+/* ── ANIMATIONS ───────────────────────────────── */
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SCROLLBAR ────────────────────────────────── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#e8eef8;}
+::-webkit-scrollbar-thumb{background:#b8c8e0;border-radius:2px;}
+
+@media(max-width:768px){
+  #sidebar{width:220px;}
+  #main{margin-left:220px;}
+  :root{--sidebar:220px;}
+  .mmap{grid-template-columns:repeat(4,1fr);}
+  .card-row.c3{grid-template-columns:1fr 1fr;}
+  .page{padding:28px 18px 80px;}
+}
+@media(max-width:520px){
+  #sidebar{transform:translateX(-100%);transition:transform .3s;}
+  #sidebar.open{transform:none;}
+  #main{margin-left:0;}
+  .card-row.c2,.card-row.c3,.w-stats,.w-modules,.rag{grid-template-columns:1fr 1fr;}
+}
+
+/* ── CASE STUDY ───────────────────────────────────── */
+.cs-wrap{background:#f8faff;border:1px solid rgba(12,39,98,.12);border-radius:var(--radius);overflow:hidden;margin-top:32px;}
+.cs-head{background:linear-gradient(135deg,#0C2762 0%,#1659E4 100%);padding:14px 20px;color:#fff;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;}
+.cs-doc{padding:18px 20px;border-bottom:1px solid rgba(12,39,98,.1);font-size:13px;color:var(--text-muted);line-height:1.8;background:#fff;}
+.cs-doc p{margin-bottom:8px;} .cs-doc p:last-child{margin-bottom:0;}
+.cs-doc strong{color:var(--text);}
+.cs-doc em{color:var(--text-muted);font-style:italic;}
+.cs-doc hr{border:none;border-top:1px solid var(--border);margin:10px 0;}
+.cs-qwrap{padding:16px 20px 20px;}
+.cs-qtitle{font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:14px;}
+.cs-q{background:#fff;border:1px solid rgba(12,39,98,.1);border-radius:8px;padding:14px 16px;margin-bottom:10px;}
+.cs-q .qq-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:6px;}
+.cs-q .qq-q{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:12px;line-height:1.6;}
+.cs-q .qq-opts{display:flex;flex-direction:column;gap:6px;}
+.cs-q .qq-opt{text-align:left;background:#f7f9fd;border:1px solid rgba(12,39,98,.1);border-radius:6px;padding:9px 13px;font-size:13px;color:var(--text-muted);cursor:pointer;transition:all .15s;}
+.cs-q .qq-opt:hover{background:#eef2fc;border-color:rgba(22,89,228,.25);}
+.cs-q .qq-opt.correct{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+.cs-q .qq-opt.wrong{background:var(--red-dim);border-color:var(--red);color:var(--red);}
+.cs-q .qq-opt.reveal{background:var(--green-dim);border-color:var(--green);color:var(--green);}
+.cs-q .qq-expl{display:none;margin-top:10px;padding:10px 12px;background:rgba(22,89,228,.06);border-radius:6px;font-size:12.5px;color:var(--text-muted);line-height:1.7;}
+.cs-q .qq-expl.show{display:block;}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sb-top">
+    <div class="sb-brand">Sales Academy</div>
+    <div class="sb-title">Formation MEDDPICC</div>
+  </div>
+  <div class="sb-prog-wrap">
+    <div class="prog-row"><span>Progression</span><span id="pct">0%</span></div>
+      <div style="padding:8px 18px 4px;border-bottom:1px solid rgba(255,255,255,.08);">
+        <button onclick="resetProgress()" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:6px 10px;font-size:10.5px;color:rgba(255,255,255,.4);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s;" onmouseover="this.style.background='rgba(220,38,38,.15)';this.style.borderColor='rgba(220,38,38,.4)';this.style.color='rgba(255,255,255,.7)'" onmouseout="this.style.background='rgba(255,255,255,.06)';this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.4)'">↺ Recommencer</button>
+      </div>
+    <div class="prog-track"><div class="prog-fill" id="pfill" style="width:0%"></div></div>
+  </div>
+  <nav class="sb-nav" id="nav-list"></nav>
+</aside>
+
+<!-- MAIN -->
+<main id="main"><div id="content"></div></main>
+<script>
+// ═══════════════════════ DATA ═══════════════════════
+
+const MODULES = [
+  // 0 — WELCOME
+  { id:'welcome', nav:'Bienvenue', sub:'Commencer ici', welcome:true },
+
+  // 1 — INTRO
+  {
+    id:'intro', nav:"Qu'est-ce que MEDDPICC ?", sub:'Module 1',
+    badge:'Module 1', title:'MEDDPICC — La méthode des deals qui se closent',
+    subtitle:"Comprendre l'origine, la philosophie et les 8 dimensions de la méthode qui structure les meilleures équipes commerciales B2B.",
+    blocks:[
+      {t:'prose',h:'Pourquoi les deals B2B échouent',p:`<p>Dans une vente B2B complexe — solutions IT, cloud, cybersécurité — le commercial passe des semaines à pitcher, faire des démos, envoyer des devis. Et puis rien. Le prospect « réfléchit encore ».</p><p>Ce n'est presque jamais un problème de produit. C'est un problème de <strong>qualification</strong>. Le commercial n'a pas compris comment la décision se prend réellement, qui a le pouvoir de signer, ou si la douleur est suffisamment forte pour justifier un changement.</p><p><strong>MEDDPICC est la réponse.</strong> Un cadre de qualification conçu pour les ventes B2B complexes : plusieurs interlocuteurs, comité de décision, étapes techniques et juridiques.</p>`},
+      {t:'hl',v:'blue',lbl:'Définition',body:`<strong>MEDDPICC</strong> est un acronyme : <strong>M</strong>etrics · <strong>E</strong>conomic Buyer · <strong>D</strong>ecision Criteria · <strong>D</strong>ecision Process · <strong>P</strong>aper Process · <strong>I</strong>dentify Pain · <strong>C</strong>hampion · <strong>C</strong>ompetition. Chaque lettre représente une dimension critique à qualifier pour maximiser ses chances de closing.`},
+      {t:'mmap'},
+      {t:'prose',h:'Histoire : de MEDDIC à MEDDPICC',p:`<p>La méthode est née chez <strong>PTC</strong> dans les années 1990 sous le nom <strong>MEDDIC</strong>. Avec le temps : MEDDIC → MEDDICC → MEDDPICC. Le <strong>P</strong> (Paper Process) a été ajouté quand les équipes ont réalisé que des deals bien qualifiés glissaient à cause de processus d'approbation non anticipés.</p><p>Aujourd'hui utilisé dans la majorité des grandes organisations B2B tech — et de plus en plus dans les ESN du secteur IT.</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Règle fondamentale',body:`<strong>Zéro supposition.</strong> Si une information n'est pas vérifiée, elle reste <strong>inconnue</strong> — et devient une action d'investigation datée. Les forecasts basés sur des suppositions créent des surprises de closing.`},
+      {t:'prose',h:'Le système de scoring RAG',p:`<p>Chaque dimension de MEDDPICC est évaluée avec un code couleur simple :</p>`},
+      {t:'rag'},
+      {t:'prose',h:'MEDDPICC dans votre contexte',p:`<p>Votre entreprise vend des solutions IT aux PME. Ce contexte a des spécificités :<br>— Le budget est souvent limité → les <strong>Metrics</strong> (ROI, coût d'inaction) sont décisifs.<br>— L'<strong>Economic Buyer</strong> est souvent le DG, parfois le DAF.<br>— Le <strong>Champion</strong> est souvent le DSI — mais n'a pas toujours accès au budget.<br>— Le <strong>Paper Process</strong> peut surprendre : expert-comptable, avocat, clauses RGPD.</p>`},
+      {t:'scenario',lbl:'🏭 Scénario fil rouge — NovaCorp',p:`<p><strong>NovaCorp</strong> est une PME industrielle de 180 employés à Lyon, fabrication de composants électroniques. Infra : 3 serveurs on-premise vieillissants, backup locale, postes Windows 10 dont le support arrive à expiration.</p><p>Le DSI, <strong>Julien Martel</strong>, a contacté votre ESN. Il est enthousiaste, technique, curieux. Mais qui d'autre est impliqué ? Quel est le vrai problème business ? Qui signe ? C'est ce que MEDDPICC va t'aider à découvrir.</p>`}
+    ],
+    quiz:[
+      {q:"Que représente fondamentalement MEDDPICC ?",opts:["Un outil CRM pour gérer les contacts","Un cadre de qualification d'opportunités B2B complexes","Un script de vente à suivre mot pour mot","Une méthode de prospection à froid"],c:1,e:"MEDDPICC est un cadre de qualification — il aide à comprendre si un deal est réellement qualifié et comment maximiser les chances de le closer. Ce n'est pas un script ni un outil CRM."},
+      {q:"Que doit-on faire si une information MEDDPICC n'est pas vérifiée ?",opts:["Estimer à partir de l'attitude du prospect","La laisser 'inconnue' et en faire une action d'investigation datée","Marquer 'qualifié' pour ne pas bloquer le pipeline","Combler avec des benchmarks sectoriels"],c:1,e:"La règle 'zéro supposition' est centrale. Si tu n'as pas de preuve, la dimension reste inconnue — et devient une action à mener avec un owner et une date."},
+      {q:"Pourquoi le 'P' (Paper Process) a-t-il été ajouté à MEDDIC ?",opts:["Les contrats nécessitent une signature physique","La conformité RGPD l'a rendu obligatoire","Le PDF est devenu le format standard","Des deals bien qualifiés échouaient à cause du processus d'approbation non anticipé"],c:3,e:"Le P a été intégré car des deals bien qualifiés sur MEDDIC échouaient quand même — non parce que le client ne voulait pas acheter, mais parce que le chemin vers la signature n'avait pas été anticipé."},
+      {q:"MEDDPICC s'applique uniquement aux deals supérieurs à 100 000€. Vrai ou faux ?",opts:["Vrai — en dessous ce n'est pas utile","Vrai — sauf pour les renouvellements","Faux — mais seulement en SaaS et cloud","Faux — MEDDPICC est pertinent dès qu'il y a plusieurs interlocuteurs et un processus de décision"],c:3,e:"MEDDPICC s'applique dès qu'une vente implique plusieurs décisionnaires et un cycle de qualification. En PME IT, même un deal de 15 000€ peut avoir un EB, un champion, un Paper Process et des critères cachés."},
+      {q:"Laquelle de ces affirmations sur le scoring RAG est FAUSSE ?",opts:["Rouge signifie un risque non qualifié","Orange signifie que la dimension est partiellement qualifiée","Une dimension verte n'a plus jamais besoin d'être revérifiée","Inconnu exige une action datée"],c:2,e:"FAUX. Même une dimension verte doit être surveillée. Les situations évoluent — un champion peut partir, un critère peut changer. MEDDPICC est une inspection permanente, pas une checklist figée."},
+      {q:"Un commercial a de solides Metrics et un Champion enthousiaste, mais n'a jamais rencontré l'Economic Buyer. Ce deal est :",opts:["Bien qualifié si le Champion confirme l'accord de l'EB","Solide — Metrics et Champion suffisent","À risque — l'EB peut tuer le deal sans que personne ne puisse l'influencer","En bonne voie — il reste juste à organiser une réunion EB"],c:2,e:"Sans accès à l'EB, le deal est fragile peu importe la qualité du reste. L'EB peut décider de ne pas signer pour des raisons que tu n'as jamais eu l'occasion d'adresser."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Le deal Orbis",
+      doc:`<p><strong>Source :</strong> Note CRM — Commercial : Marc D. — Semaine 6</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>"Orbis Technologies, 120 personnes, distribution. Contact : Romain Ferré, DSI. 4 réunions depuis 6 semaines. Romain est très engagé, répond vite, bien aligné techniquement. Il m'a dit vouloir migrer leur infra d'ici fin d'année.</em></p><p><em>J'ai présenté notre offre cloud la semaine dernière. Romain a dit que c'était exactement ce qu'il fallait. Je pense que ce deal est quasi signé. Probabilité : 85%."</em></p>`,
+      questions:[
+        {q:"Combien de dimensions MEDDPICC sont réellement qualifiées dans cette note CRM ?",opts:["7 — il manque juste la proposition","5 à 6 — Romain est engagé et aligné","3 — Metrics, EB et Pain sont clairs","2 au maximum — Champion partiel et vague intention"],c:3,e:"En lisant attentivement : aucune Metric chiffrée, EB non identifié, pas de Decision Criteria formels, pas de Decision Process cartographié, pas de Paper Process, douleur floue. Ce deal est sur du sable malgré l'enthousiasme."},
+        {q:"Marc estime la probabilité à 85%. Sur quoi repose réellement cette estimation ?",opts:["Sur le fait que Romain ait dit que c'était exactement ce qu'il fallait","Sur rien de qualifié — c'est une impression, pas une qualification MEDDPICC","Sur 4 réunions et une démo acceptée","Sur l'engagement de Romain et son alignement technique"],c:1,e:"85% basé sur l'enthousiasme d'un contact technique n'est pas une qualification. Sans EB identifié, sans Metrics, sans Decision Process, ce deal peut s'effondrer à n'importe quel moment."},
+        {q:"Quelle est l'action MEDDPICC la plus urgente avant d'envoyer la proposition ?",opts:["Envoyer la proposition rapidement pour profiter de l'élan","Demander à Romain de signer un bon de commande informel","Identifier qui est l'Economic Buyer et obtenir une réunion avec lui","Ajouter plus de détails techniques à la proposition"],c:2,e:"Envoyer une proposition sans avoir rencontré l'EB, c'est risquer de travailler pendant encore 4 semaines pour se faire dire non par quelqu'un qu'on n'a jamais rencontré."}
+      ]
+    }
+  },
+
+  // 2 — METRICS
+  {
+    id:'metrics', nav:'Metrics', sub:'M — Module 2',
+    badge:'M — Metrics', title:'M — Metrics',
+    subtitle:"Ancrer la vente dans des résultats business mesurables. Sans chiffre, il n'y a pas de deal — il y a une conversation intéressante.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Les <strong>Metrics</strong> sont les résultats business mesurables qui justifient l'investissement : combien ta solution fait gagner, économiser, ou quel risque elle élimine — avec des chiffres précis.</p><p>La formule : <strong>Baseline → Cible → Delta → Valeur €</strong>. Où en est le client ? Où veut-il aller ? Quelle est la différence ? Combien vaut cette différence ?</p>`},
+      {t:'hl',v:'blue',lbl:'Formule clé',body:`<strong>Valeur = (Baseline − Cible) × Unité × Horizon</strong><br><br>Exemple : "Vos serveurs tombent en panne <strong>3 fois/an</strong> → vous visez <strong>0 panne critique</strong>. Chaque panne coûte <strong>8 000€</strong>. Sur 3 ans : <strong>72 000€ de valeur identifiée</strong>."`},
+      {t:'cards',n:3,cards:[{ico:'💰',name:'Financières',p:"Réduction de coûts (licences, maintenance, heures IT), augmentation de CA, amélioration de marge, retour sur investissement."},{ico:'⚙️',name:'Opérationnelles',p:"Temps de traitement réduit, disponibilité améliorée, tickets divisés, déploiement raccourci, productivité des équipes."},{ico:'🛡️',name:'Risques / Stratégiques',p:"Conformité réglementaire (RGPD, ISO 27001), réduction du risque cyber, continuité d'activité, capacité à scaler."}]},
+      {t:'prose',h:"Le coût d'inaction : l'arme secrète",p:`<p>La métrique la plus puissante n'est pas la valeur de ta solution — c'est le <strong>coût d'inaction</strong> : combien coûte le fait de <em>ne rien faire</em> ? Chaque mois, le client perd-il de l'argent, risque-t-il une pénalité, s'expose-t-il à un incident ?</p><p>Quand tu quantifies ça, tu ne vends plus une solution — tu aides le client à comprendre qu'il <strong>perd déjà de l'argent</strong>. Le statu quo devient l'ennemi, pas ton concurrent.</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Erreurs courantes',body:`<strong>1. Métriques génériques</strong> — "Vous allez gagner en productivité" ne vaut rien sans chiffre. "Vous économisez 14h/semaine à votre équipe IT = 18 000€/an" est une métrique.<br><br><strong>2. Inventer les chiffres</strong> — Les métriques doivent venir du client. Un ROI inventé sera challengé et détruira ta crédibilité.<br><br><strong>3. Ne pas lier à l'EB</strong> — Une métrique technique n'a de valeur que reliée à une priorité de l'Economic Buyer.`},
+      {t:'questions',h:'Questions pour découvrir les métriques',qs:["Quels sont vos objectifs business prioritaires pour cette année ?","Comment mesurez-vous la performance de votre infrastructure aujourd'hui ?","Combien vous coûte une heure d'interruption de service ?","Quels indicateurs regardez-vous chaque semaine / chaque mois ?","Si on résout ce problème, quel impact attendez-vous dans 12 mois ?","Quelle est la valeur de ce projet si vous dépassez les objectifs ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Découverte des métriques',p:`<p>Après une première réunion avec Julien, tu as découvert que l'infra tombe en panne <strong>3 fois/an</strong>, avec des interruptions de 4 à 6h. À 200€/h de perte de production, chaque panne coûte ~<strong>1 000€</strong> directement.</p><p>Surtout : NovaCorp a un client grand compte qui exige désormais un <strong>SLA de 99,5%</strong> — sous peine de pénalités contractuelles de <strong>5 000€/incident</strong>. L'infra actuelle ne peut pas garantir ce SLA.</p><p>⚠️ <strong>Lacune :</strong> Ces chiffres viennent du DSI. Ont-ils été validés par la DG (EB) ? Elle doit partager cette lecture du risque pour que les métriques aient un poids décisionnel réel.</p>`}
+    ],
+    quiz:[
+      {q:"Un prospect te dit : 'Avec votre solution on va gagner en efficacité.' Quelle est la bonne réaction ?",opts:["Confirmer et avancer — 'efficacité' est une bonne métrique","Proposer un chiffre basé sur des benchmarks sectoriels","Quantifier : 'Qu'est-ce que ça représente concrètement en heures ou en euros ?'","Attendre le devis pour chiffrer"],c:2,e:"'Efficacité' est une aspiration, pas une métrique. Une métrique répond à : combien ? en combien de temps ? mesuré comment ? Il faut creuser pour obtenir un chiffre co-construit."},
+      {q:"Quelle est la métrique la plus percutante pour créer l'urgence chez un Economic Buyer ?",opts:["Le coût d'inaction : ce que lui coûte le fait de ne rien faire","Le ROI sur 5 ans","La liste des fonctionnalités","Le temps d'implémentation estimé"],c:0,e:"Le coût d'inaction crée l'urgence. Le client se demande non plus 'combien coûte votre solution' mais 'combien me coûte le fait de ne pas agir'. Particulièrement puissant en IT où le statu quo est souvent le premier concurrent."},
+      {q:"Dans NovaCorp, quelle lacune reste à combler sur les métriques ?",opts:["Il faut davantage chiffrer le coût des pannes","Il faut ajouter des métriques opérationnelles","Les métriques viennent du DSI — elles n'ont pas encore été validées par la DG (EB)","Les métriques sont complètes"],c:2,e:"Le DSI valide techniquement, mais l'EB (DG) doit partager cette lecture du risque. Si les métriques ne sont connues que du champion technique, elles n'ont pas de poids dans la décision finale."},
+      {q:"Un prospect dit : 'Chaque heure d'arrêt nous coûte environ 500€.' Est-ce une métrique qualifiée ?",opts:["Non — 500€ c'est trop faible pour créer de l'urgence","Oui — c'est chiffré, c'est suffisant","Pas encore — il faut valider la fréquence et confirmer que ce chiffre est partagé par l'EB","Oui si le DSI l'a confirmé"],c:2,e:"Un chiffre sans fréquence ni horizon ne permet pas de calculer la valeur totale. 500€/h × 0 pannes/an = 0€. Il faut compléter : combien d'incidents par an, quelle durée moyenne, et l'EB partage-t-il cette évaluation ?"},
+      {q:"Laquelle de ces approches est la PLUS efficace pour co-construire une métrique ?",opts:["Demander au prospect ses propres chiffres, puis construire ensemble le calcul de valeur","Utiliser des benchmarks sectoriels comme référence","Présenter un ROI calculé en interne avant la réunion","Attendre que le prospect mentionne spontanément ses objectifs financiers"],c:0,e:"Les métriques co-construites ont beaucoup plus de poids. Si c'est le client qui dit 'on perd 40 000€ par an', cette affirmation ne peut pas être challengée lors du comité de décision."},
+      {q:"Un DSI partage des métriques détaillées mais son DG n'en a jamais entendu parler. Comment évalues-tu ces métriques dans le scoring RAG ?",opts:["Vertes si elles sont chiffrées et documentées","Rouges — les métriques du DSI sont toujours biaisées","Orange — techniquement valides, mais non validées par l'EB","Vertes — le DSI est le mieux placé pour évaluer l'impact"],c:2,e:"Des métriques valides techniquement mais non partagées par l'EB sont orange. L'EB peut avoir des priorités différentes — le DSI voit l'impact IT, le DG voit l'impact business et financier. Les deux lectures doivent s'aligner."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — L'email post-démo",
+      doc:`<p><strong>Source :</strong> Email reçu — Florent Masson, DSI — Groupe Altim (PME logistique, 95 personnes)</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>"Merci pour la présentation de jeudi. Votre solution correspond bien à ce que nous cherchons. Nous souhaitons améliorer notre infrastructure pour gagner en performance et en fiabilité — nos équipes se plaignent régulièrement de lenteurs, surtout en fin de journée.</em></p><p><em>Notre budget n'est pas encore défini mais on cherche quelque chose de raisonnable. Pourriez-vous nous préparer une proposition commerciale ?"</em></p>`,
+      questions:[
+        {q:"Avez-vous des Metrics qualifiées pour construire une proposition ?",opts:["Oui si vous calculez vous-même un ROI estimé","Oui — Florent a décrit le problème de lenteurs","Oui — l'intention est claire","Non — aucune métrique chiffrée, aucun baseline ni cible mesurable"],c:3,e:"Lenteurs en fin de journée est un symptôme, pas une métrique. Combien d'utilisateurs impactés ? Combien d'heures perdues ? Quel coût business ? Sans ces chiffres, votre proposition sera perçue comme une dépense, pas un investissement."},
+        {q:"Florent demande une proposition 'rapidement'. Que faites-vous ?",opts:["Envoyez une proposition générique avec plusieurs options de prix","Envoyez la proposition dès que possible","Demandez une lettre d'intention","Demandez un call de 20 min avant pour qualifier Metrics, EB et budget"],c:3,e:"Envoyer une proposition sans Metrics, sans EB identifié et avec 'budget non défini' c'est travailler des heures pour produire un document qui ne peut pas être validé."},
+        {q:"'Budget non défini' — quelle question posez-vous à Florent ?",opts:["Quel est votre budget maximum ?","Pouvons-nous faire une offre à 30 000€ ?","Pour calibrer notre proposition, avez-vous une idée de l'enveloppe envisagée pour ce type de projet ? Et qui valide ce budget ?","Nous enverrons plusieurs options à différents niveaux de prix"],c:2,e:"Deux infos manquent : le montant approximatif ET qui valide ce budget (l'EB). La question combinée permet de découvrir les deux sans paraître intrusif."}
+      ]
+    }
+  },
+
+  // 3 — ECONOMIC BUYER
+  {
+    id:'eb', nav:'Economic Buyer', sub:'E — Module 3',
+    badge:'E — Economic Buyer', title:'E — Economic Buyer',
+    subtitle:"Identifier et accéder à la personne qui a le pouvoir final de dire oui — et de dire non.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>L'<strong>Economic Buyer</strong> (EB) est la personne — ou le groupe — qui possède l'autorité finale pour approuver la dépense et signer. Ce n'est pas forcément celle qui utilise la solution. C'est celle qui peut <strong>"signer ou tuer"</strong> le deal.</p><p>Dans une PME, l'EB est souvent le DG. Dans des structures plus grandes, le DAF ou un comité. La clé : ce n'est pas un titre, c'est une <strong>autorité réelle</strong>.</p>`},
+      {t:'hl',v:'blue',lbl:'Règle clé',body:`L'EB peut déléguer l'évaluation technique, mais ne délègue <strong>jamais</strong> la décision finale. Si quelqu'un te dit "la décision appartient au DSI", creuse toujours : <em>"Et le DG, quel est son rôle dans cette décision ?"</em>`},
+      {t:'cards',n:2,cards:[{ico:'🏢',name:'Dans une PME (contexte ESN typique)',p:"Souvent le Directeur Général. Parfois le DAF si décision budgétaire importante. Rarement le DSI seul — sauf si délégation explicite confirmée."},{ico:'🏭',name:'Dans une ETI / grande entreprise',p:"Comité IT, DSI + DAF, ou COMEX selon le montant. Souvent plusieurs personnes pensent être l'EB, mais une seule a vraiment le dernier mot."}]},
+      {t:'prose',h:"Comment accéder à l'EB",p:`<p>La meilleure approche : faire demander l'accès par ton <strong>Champion</strong>. "Est-ce qu'il serait possible d'avoir 20 minutes avec le DG pour valider que notre approche est alignée avec ses priorités avant d'aller plus loin ?"</p><p>Si le champion ne peut pas organiser ça, c'est un signal faible sur sa solidité. Un vrai champion a de l'accès et de l'influence.</p>`},
+      {t:'hl',v:'amber',lbl:"⚠️ La fatigue de l'EB",body:`Ne sur-sollicite pas l'EB avec des questions de découverte basiques. Quand tu as une réunion avec l'EB, tu arrives <strong>préparé</strong> : tu connais déjà le problème, tu as des hypothèses de valeur, tu viens valider et aligner — pas faire une discovery from scratch.`},
+      {t:'questions',h:"Questions pour qualifier l'EB",qs:["Qui prend la décision finale sur un projet de cette taille ?","Qui possède le budget pour ce type d'investissement ?","Vous m'avez parlé du DSI — quel est le rôle du DG dans cette décision ?","Y a-t-il d'autres personnes qui devront valider avant que le projet démarre ?","Quand vous avez pris une décision similaire par le passé, comment ça s'est passé ?"]},
+      {t:'expd',items:[{h:"🚨 Signal d'alarme : 'C'est moi qui décide'",c:"Si quelqu'un te dit spontanément 'c'est moi qui décide', creuse toujours. Cette personne est parfois sincère — mais dans d'autres cas elle protège son accès alors que la vraie décision se prend ailleurs. Réponse idéale : 'Super. Et dans le processus d'approbation finale, y a-t-il d'autres signatures nécessaires ?' Tu poses la question sans challenger son autorité."},{h:"🏆 Tester ton Champion",c:"Demande au champion d'organiser une réunion avec l'EB. Sa capacité à y arriver (ou non) est un test direct de son influence réelle. Un champion qui dit 'je ne peux pas faire ça' n'est pas un vrai champion — c'est un contact interne."}]},
+      {t:'scenario',lbl:"🏭 NovaCorp — Identifier l'EB",p:`<p>Julien mentionne en passant : <em>"Le DG, Sophie Renard, devra valider le budget — on parle de 45 000€ HT."</em></p><p><strong>Sophie Renard, DG de NovaCorp, est l'Economic Buyer.</strong> Julien est le champion technique, pas l'EB.</p><p>⚠️ <strong>Problème :</strong> Tu n'as jamais rencontré Sophie. Elle verra ce projet uniquement sous l'angle financier et risque.<br>✅ <strong>Action :</strong> Demander à Julien d'organiser une réunion de "validation stratégique" avec Sophie — pas une réunion commerciale.</p>`}
+    ],
+    quiz:[
+      {q:"Le DSI de NovaCorp te dit : 'Pour 45 000€, c'est la DG qui signe.' Que fais-tu en priorité ?",opts:["Demander au DSI d'organiser une réunion avec la DG","Attendre que le DSI transmette la proposition","Envoyer une proposition directement à la DG par email","Continuer uniquement avec le DSI pour ne pas court-circuiter"],c:0,e:"Accéder à l'EB est non-négociable. Attendre ou espérer que le champion transmette bien le message est risqué — le deal est vulnérable tant que l'EB ne t'a pas rencontré."},
+      {q:"Quel est le principal risque si tu n'accèdes jamais à l'Economic Buyer ?",opts:["La démo ne peut pas avoir lieu","Le deal peut être tué à n'importe quel moment par une décision que tu n'as pas eu la chance d'influencer","Le contrat prendra plus de temps","La mise en oeuvre sera plus complexe"],c:1,e:"Sans accès à l'EB, tu es entièrement dépendant de ton champion. L'EB peut décider de ne pas signer pour des raisons que tu n'as jamais eu l'occasion d'adresser. C'est la cause principale des deals qui 'meurent en silence'."},
+      {q:"Quand est le bon moment pour rencontrer l'Economic Buyer ?",opts:["Le plus tôt possible, dès que la douleur et les métriques sont identifiées","Seulement si le champion l'invite spontanément","Uniquement lors de la remise de la proposition","Le plus tard possible"],c:0,e:"Idéalement, tu rencontres l'EB dès que tu as des éléments solides sur la douleur et la valeur potentielle. Attendre la proposition expose à un risque majeur : l'EB peut invalider tout le travail en 10 minutes si ses priorités ne sont pas alignées."},
+      {q:"Un contact te dit spontanément : 'Je suis le seul décisionnaire ici.' Que fais-tu ?",opts:["Le croire — il connaît son organisation mieux que toi","Court-circuiter et contacter le DG directement","Ignorer et avancer sur la proposition","Creuser avec tact : 'Et pour un engagement de cette taille, y a-t-il d'autres validations nécessaires ?'"],c:3,e:"Ce signal doit toujours être challengé avec tact. Parfois vrai, parfois faux — la question 'y a-t-il d'autres validations ?' ne remet pas en cause son autorité et permet de vérifier si l'affirmation est exacte."},
+      {q:"L'EB vous accorde 20 minutes. Comment préparez-vous cette réunion ?",opts:["Arriver avec les hypothèses de valeur construites avec le champion, venir valider et aligner","Recommencer la discovery depuis zéro","Envoyer une présentation de 20 slides en préparation","Présenter l'ensemble de votre offre pour maximiser le temps"],c:0,e:"L'EB n'a pas le temps pour une discovery from scratch. Vous arrivez préparé : problème connu, métriques à valider, alignement stratégique à confirmer. Respecter son temps est crucial."},
+      {q:"Votre Champion vous dit qu'il ne peut pas organiser de réunion avec l'EB car 'le DG est très occupé'. Que révèle cela ?",opts:["Que le DG est effectivement occupé — il faut patienter","Qu'il faut attendre la fin du trimestre","Que le deal n'est pas prioritaire","Un signal sur la qualité du Champion — un vrai champion trouve un moyen d'accéder à l'EB"],c:3,e:"L'incapacité à organiser l'accès à l'EB est un test de qualité du champion. Un champion réel a de l'influence et de l'accès. S'il bloque cet accès, il n'a peut-être pas l'influence qu'il prétend."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — 'C'est moi qui décide'",
+      doc:`<p><strong>Source :</strong> Compte-rendu d'appel — Antoine L. — Prospect : Stéphane Blanc, DSI — Geodis Parts (140 personnes)</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><strong>Antoine :</strong> <em>"Pour un projet de cette envergure, environ 55 000€, qui prend la décision finale ?"</em></p><p><strong>Stéphane :</strong> <em>"C'est moi qui gère tout le SI. Le DG me fait entièrement confiance, je décide de mes outils."</em></p><p><strong>Antoine :</strong> <em>"Et pour le budget, c'est vous qui l'allouez ?"</em></p><p><strong>Stéphane :</strong> <em>"Oui, j'ai une enveloppe annuelle. Bon, pour 55 000€, je devrai quand même en parler à Martine (DG) mais c'est une formalité, elle valide toujours mes choix."</em></p><p><strong>Antoine :</strong> <em>"Très bien. Je vous prépare la proposition."</em></p>`,
+      questions:[
+        {q:"Antoine a-t-il correctement identifié l'Economic Buyer ?",opts:["Oui — une formalité n'est pas une vraie décision","Non — Stéphane lui-même a révélé que Martine (DG) doit valider 55 000€","Impossible à dire","Oui — Stéphane a confirmé qu'il gère le SI et a le budget"],c:1,e:"Stéphane a dit lui-même 'je devrai en parler à Martine'. Pour 55 000€, si le DG valide, le DG est l'EB. Une validation 'formalité' peut se transformer en blocage si Martine a des contraintes inconnues."},
+        {q:"Quelle aurait dû être la prochaine action d'Antoine ?",opts:["Attendre la décision de Stéphane","Envoyer la proposition à Stéphane rapidement","Demander à Stéphane d'organiser une réunion avec Martine avant d'envoyer la proposition","Contacter Martine directement par email"],c:2,e:"Antoine doit rencontrer Martine avant de finaliser la proposition. Sans accès à l'EB réelle, la proposition risque d'arriver à quelqu'un qui n'a pas le pouvoir de la signer."},
+        {q:"'Martine valide toujours mes choix' — comment interpréter cette affirmation ?",opts:["Preuve que Stéphane est bien l'EB","C'est le point de vue de Stéphane — Martine peut avoir des priorités différentes qu'il ne connaît pas","Raison de ne pas impliquer Martine inutilement","C'est une garantie que le deal est quasi signé"],c:1,e:"L'historique passé ne garantit pas la décision présente. Martine peut avoir des contraintes budgétaires ce trimestre ou une vision différente du risque cloud. Son alignement doit être vérifié directement."}
+      ]
+    }
+  },
+
+  // 4 — DECISION CRITERIA
+  {
+    id:'dc', nav:'Decision Criteria', sub:'D — Module 4',
+    badge:'D — Decision Criteria', title:'D — Decision Criteria',
+    subtitle:"Comprendre exactement comment le client va choisir — et s'assurer que les critères jouent en ta faveur.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Les <strong>Decision Criteria</strong> sont les critères utilisés pour évaluer les options. Ils peuvent être explicites (grille formelle) ou implicites (priorités non verbalisées). Les maîtriser, c'est comprendre le "scorecard" mental du client — et l'influencer.</p><p>Dans une vente IT/cloud, les critères typiques : technique (compatibilité, sécurité), financier (prix, ROI, TCO), relationnel (confiance, références, support), et risque (réversibilité, conformité).</p>`},
+      {t:'cards',n:2,cards:[{ico:'📝',name:'Critères explicites',p:"Le client a formalisé ses critères (RFP, grille d'évaluation, specs techniques). Tu les connais parce qu'il te les a communiqués formellement."},{ico:'💭',name:'Critères implicites',p:"Priorités non verbalisées : 'On préfère un fournisseur français', 'Le DG est sensible à la simplicité'. Souvent plus décisifs que les critères formalisés."}]},
+      {t:'hl',v:'green',lbl:'💡 Avantage stratégique',body:`Les Decision Criteria peuvent être <strong>influencés</strong>. Si tu les découvres tôt, tu peux aider le client à les formuler — en mettant en avant ceux sur lesquels tu excelles. Ce n'est pas de la manipulation : c'est aider le client à structurer sa décision de façon éclairée.`},
+      {t:'prose',h:'Les critères cachés à détecter',p:`<p>Dans la vente IT aux PME, certains critères ne sont jamais exprimés spontanément mais peuvent tuer un deal :</p>`},
+      {t:'list',items:[{b:'Sécurité & conformité',t:" — RGPD, ISO 27001, hébergement en France. De plus en plus présent même en PME."},{b:'Support en français',t:" — Un support uniquement en anglais peut être rédhibitoire."},{b:'Intégration ERP',t:" — Si la solution ne s'intègre pas avec leur outil de gestion, le projet est mort."},{b:'Réversibilité',t:" — 'Peut-on facilement sortir ?' La peur du lock-in est réelle en PME."},{b:'Référence sectorielle',t:" — 'Avez-vous des clients dans notre secteur ?' Question qui revient souvent."}]},
+      {t:'questions',h:'Questions pour découvrir les critères',qs:["À quoi ressemblerait la solution idéale pour vous ?","Quels sont vos critères prioritaires pour choisir entre les options ?","Y a-t-il des critères techniques non-négociables ?","Comment allez-vous calculer le ROI de ce projet en interne ?","Y a-t-il des contraintes réglementaires ou de sécurité à respecter ?","Quelles ont été les raisons du choix de votre fournisseur actuel ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Cartographie des critères',p:`<p>Critères explicites identifiés :<br>✅ Hébergement des données en France (obligation contractuelle client grand compte)<br>✅ SLA minimum 99,5%<br>✅ Support réactif en français<br>✅ Intégration ERP (Sage 100)<br>✅ Budget maximum : 50 000€ HT</p><p>Lors d'un déjeuner informel, Julien mentionne : <em>"La DG est très sensible à la simplicité — elle ne veut pas d'un outil qui nécessite une formation de 3 mois."</em></p><p>⚠️ <strong>Critère implicite détecté :</strong> simplicité d'adoption. Ce critère devra être mis en avant dans ta proposition et ta démo — sans que la DG ait eu à le formuler explicitement.</p>`}
+    ],
+    quiz:[
+      {q:"NovaCorp exige l'hébergement des données en France (obligation contractuelle). Comment catégorises-tu ce critère ?",opts:["Critère technique, pas besoin de le remonter à la DG","Critère secondaire à traiter dans les annexes","Critère négociable si on propose une garantie contractuelle","Critère non-négociable à valider immédiatement — deal-breaker potentiel"],c:3,e:"Un critère lié à une obligation contractuelle est absolu. Si tu ne peux pas héberger en France, le deal est mort peu importe les autres avantages. À qualifier immédiatement."},
+      {q:"Un concurrent propose une solution moins chère. Comment utilises-tu les Decision Criteria ?",opts:["Attaquer directement la solution concurrente","Ignorer le concurrent","Identifier les critères sur lesquels tu excelles et aider le client à mieux les pondérer","Réduire ton prix pour t'aligner"],c:2,e:"Si le prix est le seul critère, la vente se perd toujours sur le prix. Ton rôle : aider le client à comprendre que support FR, intégration ERP, SLA garanti ont une valeur qui justifie un delta de prix."},
+      {q:"Un prospect n'a pas de grille d'évaluation formelle. A-t-il des Decision Criteria ?",opts:["Non, mais les critères implicites ne sont pas importants","Non — sans grille formelle, les critères n'existent pas","Oui, mais ils se résument toujours au prix en PME","Oui — l'absence de grille signifie qu'il faut les découvrir par des questions"],c:3,e:"Les critères implicites sont souvent plus décisifs. L'absence de grille est fréquente en PME — ce n'est pas un signal que les critères n'existent pas, c'est une opportunité de les découvrir et de les influencer."},
+      {q:"Quel est l'avantage stratégique de découvrir les Decision Criteria AVANT de pitcher ?",opts:["Aucun avantage particulier — les critères sont fixes","Vous pouvez aider le client à formuler ses critères en mettant en avant ceux sur lesquels vous excellez","Vous préparez une réponse technique plus précise","Vous éliminez les concurrents dès le départ"],c:1,e:"Les critères découverts tôt peuvent être influencés. Si vous savez que le client valorise la réversibilité et que c'est un de vos points forts, vous pouvez l'aider à pondérer ce critère davantage — légitimement."},
+      {q:"Un DG dit en passant : 'On a eu un gros problème de support avec notre ancien prestataire.' Que faites-vous ?",opts:["Demandez les détails pour qualifier la douleur liée au support","Notez un critère implicite probable : qualité et réactivité du support. À adresser dans la proposition.","Rien — c'est anecdotique","Promettez immédiatement un support premium"],c:1,e:"Une mauvaise expérience passée est presque toujours un critère implicite actif. Ce DG évaluera votre support avec une attention particulière. En l'intégrant dans votre proposition, vous adressez une priorité qu'il n'a pas eu à expliquer."},
+      {q:"Vous recevez un RFP avec 40 critères. Quelle est votre première action ?",opts:["Répondre uniquement aux critères sur lesquels vous avez un avantage","Identifier les 3-5 critères vraiment non-négociables et demander une réunion pour comprendre leur poids","Envoyer une proposition standard sans tenir compte du RFP","Répondre point par point à tous les critères"],c:1,e:"Un RFP de 40 critères cache souvent 5-8 critères décisifs. La réunion de qualification avant réponse vous permet de comprendre ce qui compte vraiment — et d'orienter votre réponse stratégiquement."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Le RFP surprise",
+      doc:`<p><strong>Source :</strong> Email — Sandra Morel, Responsable IT — Prolux (retail, 220 personnes)</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>"Suite à nos échanges, notre direction a formalisé le processus de sélection. Grille d'évaluation :</em></p><p><em>1. Prix total sur 3 ans — pondération : <strong>40%</strong><br>2. Fonctionnalités techniques — pondération : <strong>30%</strong><br>3. Références clients retail — pondération : <strong>15%</strong><br>4. Support et SLA — pondération : <strong>15%</strong>"</em></p><p><em>Note interne du commercial : "Pas de références retail dans notre portfolio. On est forts sur le prix et la technique. Répondons au RFP."</em></p>`,
+      questions:[
+        {q:"Avec cette grille, quelle est votre position compétitive réaliste ?",opts:["Fragilisée sur un critère clé — références retail absentes et le prix seul ne gagne pas","Forte — prix et technique = 70% de la note","Forte si vous baissez votre prix au maximum","Neutre — toutes les solutions seront évaluées pareil"],c:0,e:"L'absence de références retail est un vrai handicap. Les références sectorielles sont souvent un critère de confiance encore plus important que les 15% affichés — un client retail se méfie d'un fournisseur qui n'a jamais géré leur type de problématique."},
+        {q:"Quelle action pour influencer les critères AVANT de répondre au RFP ?",opts:["Contester la pondération formellement","Répondre avec le maximum de détails techniques","Demander une réunion pour comprendre les priorités réelles et proposer une référence distribution comme alternative proche","Rien — le RFP est envoyé, les critères sont fixés"],c:2,e:"Un RFP reçu n'est pas un point de non-retour. Une réunion de clarification permet de découvrir que les 40% sur le prix ne signifient pas 'moins cher = gagnant' et qu'une référence distribution peut partiellement compenser."},
+        {q:"Le commercial note 'répondons au RFP' sans qualifier davantage. Quelle dimension MEDDPICC manque ?",opts:["Competition — il n'a pas identifié les autres fournisseurs","Metrics — il n'a pas chiffré la valeur","Decision Criteria approfondis — il accepte les critères tels quels sans chercher à les influencer","Champion — il ne sait pas si Sandra est un champion"],c:2,e:"Marc traite les critères comme fixes alors qu'ils peuvent être influencés. Il ne demande pas ce qui se cache derrière la pondération, ne vérifie pas si le prix est vraiment le facteur décisif, et n'explore pas comment compenser l'absence de références."}
+      ]
+    }
+  },
+
+  // 5 — DECISION PROCESS
+  {
+    id:'dp', nav:'Decision Process', sub:'D — Module 5',
+    badge:'D — Decision Process', title:'D — Decision Process',
+    subtitle:"Comprendre comment la décision va se prendre — et construire un reverse timeline réaliste.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Le <strong>Decision Process</strong> décrit les étapes, les acteurs et le calendrier par lesquels une organisation prend sa décision d'achat. Ce n'est pas seulement "qui signe" — c'est le chemin complet de "besoin identifié" à "décision prise".</p><p>Il y a souvent un processus formel (étapes officielles) et un processus informel (comment les vraies décisions se prennent). MEDDPICC demande de comprendre les deux.</p>`},
+      {t:'hl',v:'blue',lbl:'Technique clé : le Reverse Timeline',body:`Au lieu de demander "quand voulez-vous décider ?", construis le chemin <strong>à l'envers</strong> depuis la date de démarrage souhaitée.<br><br><em>"Vous voulez démarrer le 1er juin → contrat signé le 15 mai → validation DG : 2 sem. avant = 1er mai → validation juridique : 3 sem. avant = 10 avril → proposition remise : 20 mars."</em><br><br>Ce reverse timeline révèle souvent que la close date est irréaliste — et permet de l'anticiper.`},
+      {t:'prose',h:'Le multi-threading : ne jamais dépendre d\'un seul fil',p:`<p>Le multi-threading consiste à avoir des contacts actifs <strong>à plusieurs niveaux</strong> de l'organisation. Un deal mono-thread est fragile :</p><p>— Ton interlocuteur principal quitte → deal mort.<br>— Il change de priorités → deal en pause.<br>— Il est enthousiaste mais sans pouvoir → deal fantôme.</p><p>En vente IT : DSI (technique), DAF (budget), DG (stratégie), responsable IT opérationnel (adoption).</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Effort ≠ Avancement',body:`Beaucoup de commerciaux confondent <strong>l'activité</strong> (emails, réunions, démos) avec <strong>l'avancement</strong>. La question clé : <em>"Quelle est la prochaine étape formelle du process de décision ?"</em> Si personne ne peut répondre précisément, le deal est bloqué.`},
+      {t:'questions',h:'Questions pour cartographier le Decision Process',qs:["Comment avez-vous pris votre dernière décision d'achat IT similaire ?","Quelles sont les étapes formelles avant de pouvoir signer un contrat ?","Qui doit valider quoi, dans quel ordre ?","Y a-t-il un comité technique ou un comité d'approbation budgétaire ?","Quel est votre objectif de démarrage ? En partant de là, quelle est votre date de signature cible ?","Qu'est-ce qui pourrait faire glisser la décision de 1 à 2 mois ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Reverse Timeline',p:`<p>Julien explique : <em>"Moi je valide techniquement, je présente à Sophie qui valide le budget. Ça devrait aller vite."</em></p><p>Reverse timeline depuis la date souhaitée (démarrage 1er juillet) :<br>🗓️ 1er juillet : démarrage projet<br>→ 15 juin : signature contrat<br>→ 1er juin : validation DG Sophie<br>→ <strong>⚠️ Sophie est en vacances 2 semaines en mai !</strong><br>→ Présentation à Sophie : 25 avril au plus tard<br>→ Proposition commerciale : 11 avril maximum</p><p><strong>Sans ce reverse timeline, tu aurais remis la proposition en mai — et raté la fenêtre de décision.</strong></p>`}
+    ],
+    quiz:[
+      {q:"Tu as eu 8 réunions avec NovaCorp en 6 semaines. Le deal avance-t-il ?",opts:["Oui, la fréquence confirme que le budget est alloué","Non, 8 réunions c'est trop — tu sur-investis","Oui, 8 réunions montrent un fort engagement","Pas nécessairement — l'activité n'est pas un indicateur d'avancement. La clé : quelle est la prochaine étape formelle ?"],c:3,e:"L'activité n'est pas synonyme d'avancement. Un deal peut générer beaucoup d'activité sans franchir aucune étape formelle. La vraie question : 'Quelle est la prochaine étape dans leur processus de décision ?'"},
+      {q:"À quoi sert la technique du Reverse Timeline ?",opts:["À remonter depuis la date souhaitée pour identifier toutes les étapes et les vraies dates critiques","À prévoir la durée d'implémentation","À calculer le temps passé sur une opportunité","À suivre l'historique des échanges"],c:0,e:"Le reverse timeline part de la date de démarrage souhaitée et remonte en arrière. Il révèle souvent que la close date annoncée est irréaliste, et permet d'anticiper les actions nécessaires."},
+      {q:"Pourquoi le multi-threading est-il crucial ?",opts:["Pour réduire la dépendance à un seul interlocuteur et s'assurer que le deal avance même si l'un change de priorités","Pour court-circuiter le champion","Pour mieux comprendre les aspects techniques","Pour avoir plus de contacts à inviter aux événements"],c:0,e:"Un deal mono-thread est fragile : si ton seul interlocuteur part ou change de priorités, le deal s'effondre. Le multi-threading construit plusieurs points de contact à différents niveaux."},
+      {q:"Un prospect dit 'on prendra la décision en octobre'. Quelle question posez-vous ?",opts:["Pouvez-vous vous engager formellement sur cette date ?","D'accord, je reviens début octobre","Quelle solution allez-vous choisir ?","Pour démarrer en octobre, quelles étapes faut-il franchir avant ? Qui doit valider quoi ?"],c:3,e:"Octobre est une intention, pas un processus. Le reverse timeline part de là : quelles validations avant ? La réunion EB ? La validation juridique ? En remontant, on découvre souvent que les actions doivent commencer en juillet."},
+      {q:"Votre contact principal part en congé maternité dans 3 semaines. Quelle est la priorité immédiate ?",opts:["Attendre son retour","Activer le multi-threading : identifier d'autres contacts qui peuvent continuer à porter le projet","Accélérer pour closer avant son départ","Lui demander de signer avant de partir"],c:1,e:"Un contact unique qui disparaît peut geler un deal pendant des mois. Le multi-threading d'urgence s'impose : identifier son remplaçant, rencontrer l'EB directement, créer des liens avec d'autres parties prenantes."},
+      {q:"Lors d'un appel, votre contact dit 'la prochaine étape c'est qu'on voit ça en interne et on vous revient'. Est-ce une étape formelle ?",opts:["Non — mais c'est suffisant pour attendre","Oui si c'est un comité de direction","Non — il faut demander : qui voit ça, avec qui, pour décider quoi, avant quelle date ?","Oui — c'est clair et précis"],c:2,e:"'On voit ça en interne' ne définit ni les acteurs, ni les critères, ni le délai. Sans ces précisions, vous ne savez pas si le deal avance ou s'il vient d'entrer dans une zone d'ombre où il peut rester indéfiniment."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Le pipeline qui tourne en rond",
+      doc:`<p><strong>Source :</strong> Extrait CRM — Deal Optima Services — Commercial : Julie R.</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Sem. 1 : Démo technique — très bien reçue<br>Sem. 2 : Call questions-réponses techniques<br>Sem. 3 : Relance email — pas de réponse<br>Sem. 4 : Réunion de présentation de l'offre<br>Sem. 5 : Call de suivi — "on regarde encore"<br>Sem. 6 : Relance — réponse positive, enthousiaste<br>Sem. 7 : Réunion pour rediscuter des options<br>Sem. 8 : En attente. Probabilité : 70%.</em></p><p><em>Note de Julie : "Contact très réactif et enthousiaste. Deal bien engagé."</em></p>`,
+      questions:[
+        {q:"En regardant le CRM, quelle est la vraie situation de ce deal ?",opts:["Il est en phase finale","Il est solide — le contact est enthousiaste","Il tourne en rond — beaucoup d'activité mais aucune étape formelle du Decision Process franchie","Il avance bien — 8 semaines d'engagement actif"],c:2,e:"8 semaines, 6 interactions, et le deal est toujours au même stade. Pas de validation EB, pas de critères formalisés, pas de processus cartographié. L'enthousiasme cache une stagnation réelle."},
+        {q:"Quelle question Julie aurait dû poser dès la semaine 3 ?",opts:["Quelle est la prochaine étape formelle dans votre processus de décision — qui doit valider quoi, et avant quelle date ?","Avez-vous des questions supplémentaires ?","Êtes-vous satisfait de notre offre ?","Quand pouvez-vous vous engager ?"],c:0,e:"La question sur la prochaine étape formelle est la plus puissante pour diagnostiquer si un deal avance ou stagne. En semaine 3, la réponse aurait révélé soit un vrai processus en cours, soit son absence."},
+        {q:"La probabilité est estimée à 70%. Est-ce justifié ?",opts:["Peut-être — 70% est raisonnable pour un deal en cours","Oui — l'enthousiasme et 8 semaines d'engagement le justifient","Oui si le DSI a confirmé verbalement","Non — sans Decision Process cartographié, sans EB rencontré, cette estimation n'est pas fondée"],c:3,e:"70% basé sur l'enthousiasme est un biais. Une estimation MEDDPICC se construit sur : EB rencontré, Decision Process clair, Metrics validées, Pain fort. Aucun de ces éléments n'apparaît. Ce deal devrait être à 30-40% maximum."}
+      ]
+    }
+  },
+
+  // 6 — PAPER PROCESS
+  {
+    id:'pp', nav:'Paper Process', sub:'P — Module 6',
+    badge:'P — Paper Process', title:'P — Paper Process',
+    subtitle:"Anticiper tout ce qui se passe entre le 'oui' de l'EB et le contrat signé — pour ne plus rater des close dates.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Le <strong>Paper Process</strong> recouvre tous les processus d'approbation, de validation contractuelle, d'achats, de sécurité et de référencement fournisseur qui doivent être franchis pour qu'un contrat soit signé — même lorsque la décision d'achat est déjà prise.</p><p>C'est la lettre ajoutée à MEDDIC parce que des deals bien qualifiés sur toutes les autres dimensions échouaient quand même à cause de processus non anticipés.</p>`},
+      {t:'hl',v:'red',lbl:'🔴 Distinction fondamentale',body:`<strong>Decision Process</strong> = comment la décision est <em>prise</em>.<br><strong>Paper Process</strong> = tout ce qui se passe <strong>après</strong> que la décision est prise, jusqu'à la signature.`},
+      {t:'list',items:[{b:'Service achats',t:" — Procédure de mise en concurrence obligatoire au-delà d'un certain montant."},{b:'Validation juridique',t:" — Relecture des CGV, SLA, clauses de responsabilité. Peut prendre 3 à 6 semaines."},{b:'Validation sécurité / RSSI',t:" — Pour les solutions cloud, questionnaire, audit, certification obligatoire."},{b:'Référencement fournisseur',t:" — Onboarding (Kbis, assurances, RIB) avant de pouvoir signer."},{b:'Délégation de signature',t:" — Qui signe ? A-t-il délégation ? Où est-il le jour J ?"},{b:'DPA (Data Processing Agreement)',t:" — Obligatoire RGPD pour tout traitement de données personnelles."}]},
+      {t:'hl',v:'green',lbl:'💡 Bonne pratique',body:`Demande le Paper Process <strong>tôt</strong> — dès que tu as confirmé l'intérêt du client. <em>"Pour bien calibrer notre planning, pouvez-vous me décrire le chemin entre la décision d'acheter et le contrat signé ?"</em> Cette question ne présume pas que la décision est prise, mais te donne toute l'info pour anticiper.`},
+      {t:'questions',h:'Questions pour qualifier le Paper Process',qs:["Entre la décision d'acheter et la signature, que se passe-t-il de votre côté ?","Y a-t-il un service achats impliqué ? Procédure de mise en concurrence ?","Le service juridique doit-il valider le contrat ? Quel est leur délai habituel ?","Y a-t-il des exigences de sécurité pour référencer un fournisseur cloud ?","Qui a la délégation de signature pour 45 000€ ?","Avez-vous un modèle de DPA que vous utilisez habituellement ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Paper Process',p:`<p>Tu demandes à Julien : <em>"Entre le moment où Sophie dit OK et la signature, il se passe quoi ?"</em></p><p>Réponse : <em>"Au-delà de 30 000€, notre expert-comptable doit valider. Et le contrat cloud, notre avocat voudra le relire."</em></p><p>⏱️ Expert-comptable : ~2 semaines<br>⏱️ Avocat (CGV + SLA + DPA) : ~3 semaines<br>📋 DPA obligatoire : as-tu un template prêt ?<br>✍️ Sophie signe électroniquement ou papier ?</p><p><strong>Sans cette information, tu aurais envoyé le contrat après le "OK" de Sophie — et attendu 5 semaines supplémentaires en croyant le deal quasiment signé.</strong></p>`}
+    ],
+    quiz:[
+      {q:"La DG de NovaCorp te dit 'oui, on y va'. Le deal est-il signé ?",opts:["Ça dépend du montant","Oui, mais seulement si tu enregistres la conversation","Non — le 'oui' de l'EB est le début du Paper Process, pas la fin du deal","Oui — un 'oui' verbal de l'EB équivaut à une décision prise"],c:2,e:"Un 'oui' verbal de l'EB est une victoire de Decision Process — pas une victoire commerciale. Le Paper Process commence là. Expert-comptable, avocat, DPA, signature : tout reste à franchir."},
+      {q:"Quel est le bon moment pour explorer le Paper Process ?",opts:["Uniquement pour les deals supérieurs à 100 000€","Uniquement après que l'EB a dit oui","Dès que tu as confirmé l'intérêt du client — bien avant la décision finale","Au moment d'envoyer la proposition"],c:2,e:"Plus tôt tu explores le Paper Process, mieux tu peux anticiper dans ton planning. Attendre le 'oui' de l'EB pour découvrir que le service achats impose 4 semaines de procédure, c'est systématiquement rater ses close dates."},
+      {q:"Quelle est la différence principale entre Decision Process et Paper Process ?",opts:["Le Decision Process = comment la décision est prise ; le Paper Process = tout ce qui se passe après jusqu'à la signature","Ce sont deux façons de décrire la même chose","Le Decision Process est technique, le Paper Process commercial","Le Paper Process concerne uniquement les contrats physiques"],c:0,e:"Decision Process = comment le client décide d'acheter. Paper Process = le chemin entre 'la décision est prise' et 'le contrat est signé'. Deux processus distincts à cartographier séparément."},
+      {q:"Un client annonce un seuil achats à 30 000€ et votre deal est à 35 000€ avec une close date dans 2 semaines. Que faites-vous ?",opts:["Attendre sans rien faire","Discuter avec votre contact pour comprendre si une exception est possible, sinon décaler la close date","Baisser à 29 900€ pour contourner la procédure","Envoyer le contrat maintenant et espérer que la procédure soit rapide"],c:1,e:"La première action est de comprendre si une exception ou un chemin alternatif existe. Si non, décaler la close date — une close date irréaliste crée des frustrations. Baisser le prix sous le seuil est une tactique risquée."},
+      {q:"Pourquoi le DPA (Data Processing Agreement) est-il important dans une vente cloud ?",opts:["C'est uniquement nécessaire pour les données médicales","C'est optionnel — seules les grandes entreprises en ont besoin","C'est obligatoire dès que la solution traite des données personnelles — son absence peut bloquer la signature","C'est une formalité qui ne bloque jamais"],c:2,e:"Le RGPD impose un DPA pour tout traitement de données personnelles. En cloud IT, c'est quasi systématique. Un service juridique qui découvre l'absence de DPA au moment de la signature peut bloquer le deal pendant des semaines."},
+      {q:"Votre Champion ne connaît pas leur Paper Process car 'on n'a jamais acheté de solution cloud'. Comment gérez-vous ça ?",opts:["Concluez que le Paper Process sera simple car inexistant","Envoyez le contrat et attendez","Proposez un template de processus simple et demandez-lui de le valider avec le DG et le service juridique","Demandez directement au DG de court-circuiter"],c:2,e:"Un Paper Process inexistant se crée — et peut prendre plus de temps qu'un processus établi. Proposer un template et le valider avec toutes les parties évite les surprises quand le contrat arrive entre les mains de personnes qui ne l'ont pas anticipé."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Le 'oui' qui ne se transforme pas en contrat",
+      doc:`<p><strong>Source :</strong> Échange Slack interne — Commercial : Paul T.</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Paul à son manager — Vendredi 14h :</em><br><em>"Super nouvelle ! Nathalie (DG de Kermex) m'a dit oui ce matin. J'envoie le contrat cet aprèm, on devrait signer début de semaine prochaine. Je mets le deal en Won ?"</em></p><p><em>Manager : "Attends. T'as qualifié le Paper Process ?"</em></p><p><em>Paul : "Bah... elle a dit oui ?"</em></p><p><em>[3 semaines plus tard :] "Toujours en attente. Leur avocat relit le contrat. Et le service achats demande 2 devis supplémentaires pour 42 000€..."</em></p>`,
+      questions:[
+        {q:"Quel était le vrai état du deal quand Paul a dit 'on devrait signer début de semaine' ?",opts:["Deal à risque à cause d'un concurrent","Deal en Won","Decision Process validé, Paper Process inconnu — le plus dur restait à faire","Deal signé — le oui verbal d'un DG suffit"],c:2,e:"Le 'oui' de la DG clôt le Decision Process mais ouvre le Paper Process. Sans avoir qualifié les étapes contractuelles, Paul n'avait aucune idée de ce qui l'attendait."},
+        {q:"À quel moment Paul aurait dû poser la question du Paper Process ?",opts:["Dès qu'il avait confirmé l'intérêt sérieux de Kermex, bien avant la décision finale","Ce n'est pas à lui de demander","Lors de la remise de la proposition","Après le 'oui' de la DG"],c:0,e:"La question du Paper Process se pose quand le client est engagé mais avant que la décision soit prise. 'Pour préparer notre planning, pouvez-vous me décrire ce qui se passe entre la décision et la signature ?' — ne présume pas de la décision."},
+        {q:"Le service achats demande 2 devis supplémentaires. Que révèle cette surprise ?",opts:["Kermex n'est pas sérieux","Paul n'a pas bien vendu","Le Paper Process n'était pas qualifié : une procédure de mise en concurrence à 42 000€ aurait dû être anticipée","Rien — c'est une procédure normale"],c:2,e:"Une procédure achats de ce type est prévisible si on pose la bonne question. 'Au-delà de quel montant votre service achats intervient-il ?' — une question simple qui évite 3 semaines de surprise."}
+      ]
+    }
+  },
+
+  // 7 — IDENTIFY PAIN
+  {
+    id:'pain', nav:'Identify Pain', sub:'I — Module 7',
+    badge:'I — Identify Pain', title:'I — Identify / Implicate Pain',
+    subtitle:"Identifier la douleur réelle — et en faire ressentir les implications — pour créer l'urgence de changer.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Le <strong>Pain</strong> est le problème actuel ou anticipé suffisamment douloureux pour justifier un changement. Mais MEDDPICC ne s'arrête pas à l'identification — il demande d'<strong>impliquer</strong> la douleur : faire comprendre au client les conséquences réelles de ne pas agir.</p><p>La différence entre une "douleur" et un "problème" : la douleur a un coût, un risque, une urgence. Le problème peut vivre sans action.</p>`},
+      {t:'hl',v:'red',lbl:'Distinction critique',body:`<strong>Douleur légère</strong> : "Notre infra est un peu vieille." → Le client peut vivre avec.<br><strong>Douleur forte</strong> : "Notre infra vieillissante risque de faire tomber le SLA d'un client qui représente 30% de notre CA et des pénalités contractuelles de 5 000€/incident." → Le client doit agir.`},
+      {t:'prose',h:'La structure de découverte de la douleur',p:`<p>La meilleure approche pour découvrir et impliquer la douleur suit cette logique :</p>`},
+      {t:'cards',n:3,cards:[{ico:'🔍',name:'1. Situation',p:"Comprendre le contexte actuel sans jugement. 'Décrivez-moi votre infrastructure actuelle.' 'Comment fonctionnez-vous aujourd'hui ?'"},{ico:'⚠️',name:"2. Problème",p:"Explorer les difficultés. 'Qu'est-ce qui ne fonctionne pas comme vous le voudriez ?' 'Où perdez-vous du temps / de l'argent ?'"},{ico:'💥',name:'3. Implication',p:"Creuser les conséquences. 'Que se passe-t-il si rien ne change dans 12 mois ?' 'Quel impact a ce problème sur vos objectifs business ?'"}]},
+      {t:'prose',h:'Le Compelling Event : l\'urgence externe',p:`<p>Un <strong>Compelling Event</strong> est un événement externe qui crée une deadline naturelle et renforce l'urgence. C'est l'élément le plus puissant pour éviter le "on verra ça plus tard".</p><p>Exemples : fin de support Windows (date fixe), renouvellement contrat client (deadline), audit de conformité (date imposée), levée de fonds (croissance à soutenir).</p><p>Dans NovaCorp : la fin de support Windows + le SLA contractuel du grand compte sont deux compelling events puissants.</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Erreurs courantes',body:`<strong>1. Rester au niveau symptôme</strong> — "Vos serveurs sont vieux" est un symptôme. "Vous perdez 36 000€/an en risque de pénalité" est une douleur.<br><br><strong>2. Découvrir la douleur trop tard</strong> — Si tu découvres la vraie douleur après avoir envoyé la proposition, tu ne peux plus t'en servir pour qualifier.<br><br><strong>3. Imposer la douleur</strong> — La douleur doit être <em>découverte et partagée</em> par le client, pas affirmée par le commercial.`},
+      {t:'questions',h:'Questions pour découvrir et impliquer la douleur',qs:["Quels sont vos plus grands défis opérationnels en ce moment ?","Qu'est-ce qui vous a poussé à chercher une solution maintenant plutôt que dans 6 mois ?","Que se passe-t-il si ce problème n'est pas résolu d'ici la fin de l'année ?","Qui d'autre est impacté par ce problème dans votre organisation ?","Avez-vous déjà essayé de résoudre ce problème par le passé ? Qu'est-ce qui a bloqué ?","Si vous deviez mettre un chiffre sur ce problème, ça représenterait quoi ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Cartographie de la douleur',p:`<p><strong>Douleur de surface (Julien)</strong> : "Notre infra est vieille, on a des pannes."<br><strong>Douleur réelle (découverte en creusant)</strong> : Risque de perdre un contrat grand compte (120 000€/an) + pénalités 5 000€/incident + fin de support Windows à venir.</p><p><strong>Compelling Events</strong> :<br>📅 Fin de support Windows 10 : date fixe et imminente<br>📋 Renouvellement contrat grand compte : audit SLA prévu dans 4 mois</p><p>✅ <strong>La douleur est forte, chiffrée et urgente.</strong> C'est le socle de tout le deal. Chaque fois que la décision pourrait glisser, tu reviens sur ces chiffres.</p>`}
+    ],
+    quiz:[
+      {q:"Julien te dit : 'Notre infra est un peu vieillissante, ça crée parfois des petits soucis.' C'est une douleur qualifiée ?",opts:["Non — c'est un symptôme. Il faut creuser les implications concrètes et les chiffrer","Oui, si le DSI est préoccupé, c'est une douleur valide","Oui, c'est suffisant pour avancer","Non, mais uniquement parce qu'il n'a pas mentionné de montant"],c:0,e:"'Petits soucis' est un symptôme, pas une douleur. Une douleur a un coût, un risque, une urgence. Il faut creuser : 'Que se passe-t-il concrètement lors d'une panne ? Qui est impacté ? Quel est le coût ?'"},
+      {q:"Qu'est-ce qu'un Compelling Event et pourquoi est-il précieux ?",opts:["Un événement externe qui crée une deadline naturelle et renforce l'urgence d'agir","L'événement qui déclenche la signature du contrat","Un événement marketing (salon, webinar) pour créer de l'engagement","Le moment où le commercial présente sa proposition"],c:0,e:"Un Compelling Event est externe au cycle de vente — fin de support, audit, renouvellement contractuel. Il est précieux parce qu'il crée une urgence que le commercial n'a pas à imposer : elle vient de la réalité du client."},
+      {q:"Quand est le bon moment pour découvrir la douleur dans le cycle de vente ?",opts:["Uniquement si le client en parle spontanément","Après avoir présenté la solution pour lier la douleur aux fonctionnalités","Au moment de la proposition pour justifier le prix","Le plus tôt possible — la douleur est le fondement de tout le deal"],c:3,e:"La douleur est le socle de MEDDPICC. Si tu ne la qualifies pas tôt, tu construis tout le deal sur du sable. La proposition, la démonstration, les métriques — tout doit s'ancrer dans la douleur identifiée et partagée."},
+      {q:"Un prospect dit : 'On aimerait moderniser notre infra, mais c'est pas urgent.' Que faites-vous ?",opts:["Acceptez que ce n'est pas urgent et revenez dans 6 mois","Cherchez un Compelling Event : y a-t-il une deadline externe (contrat, audit, fin de support) qui rende l'inaction coûteuse ?","Créez artificiellement l'urgence avec une offre limitée","Abandonnez le deal — sans urgence, il n'y a pas de deal"],c:1,e:"'Pas urgent' signifie souvent 'je n'ai pas mesuré le coût d'attendre'. Un Compelling Event latent existe presque toujours. Votre rôle : aider le client à voir ce qui rend l'inaction risquée, pas inventer une fausse urgence."},
+      {q:"La douleur d'un DSI (pannes, maintenance) et la douleur d'un DG (risque contractuel, coût) sont-elles identiques ?",opts:["Oui — le problème technique impacte tout le monde de la même façon","Non — elles sont complémentaires mais s'expriment différemment. Il faut qualifier les deux.","Seule la douleur technique du DSI compte","Seule la douleur du DG compte"],c:1,e:"Le DSI vit la douleur opérationnellement, le DG la vit financièrement et stratégiquement. Pour convaincre l'EB, présentez la douleur dans son langage — business, financier, risque — pas dans le langage technique."},
+      {q:"Un prospect a une douleur forte mais aucun Compelling Event. Quel est le risque principal ?",opts:["Aucun risque — une forte douleur suffit à créer l'urgence","La douleur n'est pas réelle sans deadline","Le deal peut traîner indéfiniment — la douleur forte sans deadline peut toujours être reportée","Le deal ne peut pas se closer sans Compelling Event"],c:2,e:"Même une douleur forte peut coexister avec l'inaction si rien n'impose un délai. Le statu quo est confortable. Sans Compelling Event, le prospect peut reporter à chaque trimestre. Trouver ou créer un Compelling Event légitime est une priorité."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — La douleur qui ne crée pas d'urgence",
+      doc:`<p><strong>Source :</strong> Notes d'appel — Commercial : Emma G. — Kevin Marais, DSI — Teralia (BTP, 110 personnes)</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Kevin : "Ouais, on a des lenteurs sur notre réseau. Et notre serveur de fichiers date de 2017."</em></p><p><em>Emma : "Et ça vous coûte quoi ces problèmes ?"</em></p><p><em>Kevin : "Bah... du temps perdu je suppose. C'est pas catastrophique hein, on s'en sort. Mais ce serait bien d'améliorer ça."</em></p><p><em>Emma : "D'accord. Je vous prépare une proposition cloud."</em></p>`,
+      questions:[
+        {q:"Emma a-t-elle correctement qualifié la douleur avant de proposer ?",opts:["Non — la douleur est vague, non chiffrée, et Kevin dit lui-même que ce n'est pas catastrophique","Oui — Kevin a décrit des problèmes concrets","Non, mais une proposition peut révéler la valeur","Oui — lenteurs et serveur vieux sont des douleurs IT classiques"],c:0,e:"'C'est pas catastrophique, on s'en sort' est l'opposé d'une douleur qualifiée. Emma s'apprête à proposer pour un problème que Kevin ne considère pas urgent. Sans douleur forte ni Compelling Event, cette proposition a peu de chances d'aboutir."},
+        {q:"Quelles questions Emma aurait dû poser pour impliquer la douleur ?",opts:["Quel est votre budget ?","Qu'est-ce qui se passe si un plan de chantier n'est pas accessible au bon moment ? Et si ce problème persiste 12 mois, quel impact sur vos chantiers et vos clients ?","Combien de serveurs avez-vous ?","Avez-vous regardé d'autres solutions ?"],c:1,e:"La question d'implication creuse les conséquences business : retard de chantier = pénalités client, image dégradée. Kevin vit le problème comme un inconfort IT — Emma doit l'aider à voir le coût business de l'inaction."},
+        {q:"Emma envoie la proposition. Quel sera probablement le résultat ?",opts:["Kevin la transmettra directement au DG","La proposition sera lue avec intérêt mais ne créera pas d'urgence — Kevin la mettra 'en attente' indéfiniment","La proposition sera signée rapidement","La proposition sera rejetée immédiatement"],c:1,e:"Sans douleur forte ni Compelling Event, une proposition atterrit dans la pile 'intéressant mais pas prioritaire'. Emma devrait reprendre la qualification de la douleur avant de proposer — pas après."}
+      ]
+    }
+  },
+
+  // 8 — CHAMPION
+  {
+    id:'champion', nav:'Champion', sub:'C — Module 8',
+    badge:'C — Champion', title:'C — Champion',
+    subtitle:"Identifier et développer l'allié interne qui va vendre pour toi quand tu n'es pas dans la pièce.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>Le <strong>Champion</strong> est un sponsor interne enthousiaste, influent, capable de promouvoir ton projet et ton approche quand tu n'es pas là. Ce n'est pas un simple contact sympa — c'est quelqu'un qui a un intérêt personnel au succès du projet <em>et</em> l'influence pour le faire avancer.</p><p>La formule : <strong>Champion = Enthousiasme + Influence + Accès</strong>. Les trois conditions sont nécessaires. Un champion enthousiaste sans influence est un contact agréable, pas un champion.</p>`},
+      {t:'cards',n:2,cards:[{ico:'🤝',name:'Coach vs Champion',p:"Un coach vous donne de l'information. Un champion se bat pour vous en interne, organise des réunions avec l'EB, défend votre solution face aux sceptiques."},{ico:'🎯',name:'Intérêt personnel',p:"Tout champion a une raison personnelle de vouloir ce projet : promotion, résolution d'un problème récurrent, reconnaissance interne. Cette motivation est ton levier."}]},
+      {t:'hl',v:'blue',lbl:'Tester ton champion',body:`Un vrai champion agit. Pour le tester :<br>— Lui demander d'organiser une réunion avec l'EB → le fait-il ?<br>— Lui demander de partager une information interne (budget, concurrents en lice) → le fait-il ?<br>— Lui demander de défendre un argument spécifique en interne → le fait-il ?<br><br>Si le champion ne peut ou ne veut pas agir, c'est un contact, pas un champion.`},
+      {t:'prose',h:'Développer un champion',p:`<p>Parfois le champion n'existe pas encore — il faut le créer. Les étapes :</p><p>1. Identifier la personne la plus susceptible d'avoir un intérêt personnel dans le projet.<br>2. L'aider à comprendre et à articuler la valeur du projet pour lui personnellement.<br>3. Lui donner les outils pour vendre en interne : chiffres, arguments, slides, réponses aux objections.<br>4. Construire la relation en transparence — partager ce que tu fais, pourquoi, ce dont tu as besoin de lui.</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Erreurs courantes',body:`<strong>1. Confondre "contact" et "champion"</strong> — La personne enthousiaste en réunion n'est pas forcément ton champion si elle n'a pas d'influence.<br><br><strong>2. Ne pas vérifier l'accès à l'EB</strong> — Un champion qui n'a jamais de conversation directe avec l'EB ne peut pas faire avancer ton deal.<br><br><strong>3. Un seul champion</strong> — Si ton champion unique quitte l'entreprise ou change de poste, le deal meurt. Idéalement : 2 champions à des niveaux différents.`},
+      {t:'questions',h:'Questions pour qualifier et développer le champion',qs:["Pourquoi ce projet est-il important pour vous personnellement ?","Êtes-vous prêt à défendre ce projet en interne si on vous demande pourquoi ce choix ?","Pouvez-vous organiser une réunion avec le DG pour valider l'alignement stratégique ?","Comment s'est passée votre dernière réunion avec le DG sur ce sujet ?","Y a-t-il d'autres personnes dans votre équipe qui soutiennent ce projet ?","Quels sont les sceptiques en interne et comment les adressez-vous ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Julien comme Champion',p:`<p><strong>Julien</strong> est enthousiaste ✅. Il comprend la valeur technique ✅. Il connaît les problèmes internes ✅.</p><p>Mais : il n'a pas encore organisé la réunion avec Sophie (EB) ⚠️. Quand tu lui demandes, il dit "Sophie est difficile d'accès, je préfère lui présenter ça quand on aura une proposition concrète."</p><p>⚠️ <strong>Signal d'alarme :</strong> Un champion fort ne retarde pas l'accès à l'EB — il le facilite. Ce comportement peut indiquer :<br>— Il a peur que Sophie rejette le projet<br>— Il n'a pas autant d'accès qu'il le laisse entendre<br>— Il veut contrôler le message</p><p>✅ <strong>Action :</strong> Fournir à Julien les arguments clés, le "script" pour présenter à Sophie, et relancer sur la réunion avec une date précise.</p>`}
+    ],
+    quiz:[
+      {q:"Julien est enthousiaste, compétent et bien informé sur ton projet. Est-ce un bon champion ?",opts:["Oui, s'il est le DSI il a forcément l'influence nécessaire","Pas encore — il faut aussi vérifier son influence réelle et son accès à l'EB","Non, un DSI ne peut jamais être champion car il n'a pas accès au budget","Oui, l'enthousiasme et la compétence suffisent"],c:1,e:"Champion = Enthousiasme + Influence + Accès. L'enthousiasme seul ne suffit pas. Il faut vérifier : peut-il organiser la réunion avec l'EB ? Peut-il défendre le projet en interne ? A-t-il l'oreille du DG ?"},
+      {q:"Comment tester si Julien est un vrai champion ou juste un contact sympa ?",opts:["Lui demander d'agir concrètement : organiser une réunion avec la DG, partager des informations internes, défendre un argument spécifique","Lui demander son avis sur le concurrent","Lui demander de signer un document","Lui envoyer un questionnaire de satisfaction"],c:0,e:"Un champion se teste par l'action, pas par les déclarations d'intention. S'il accepte d'agir — et agit vraiment — c'est un champion. S'il recule, hésite ou ne fait pas ce qu'il promet, c'est un contact agréable, pas un champion."},
+      {q:"Julien est ton seul champion. Quel est le risque principal ?",opts:["Il parlera de ton offre à tes concurrents","La proposition sera trop technique","La DG ne fera pas confiance à Julien","Si Julien quitte NovaCorp ou change de priorités, le deal meurt instantanément"],c:3,e:"Un deal mono-champion est fragile. Si le champion unique part, est absent ou change de priorités, tu n'as plus de relais interne. Idéalement, développe un second champion à un niveau différent — typiquement quelqu'un proche de l'EB."},
+      {q:"Quelle est la différence entre un Champion et un Coach ?",opts:["Le Champion est technique, le Coach business","Il n'y a pas de différence","Le Coach donne de l'information, le Champion se bat pour vous en interne et prend des risques","Le Coach est plus senior"],c:2,e:"Un coach est utile — il partage des infos, répond aux questions. Mais il ne prend pas de risque pour vous. Un champion défend votre solution en réunion interne sans que vous soyez là et met son capital politique en jeu."},
+      {q:"Votre champion vous dit 'je vous soutiens à 100%, mais je ne peux pas parler de ça au DG maintenant'. Que concluez-vous ?",opts:["Normal — le DG est souvent occupé","Signal d'alarme : un champion fort trouve un moyen d'accéder à l'EB. Ce blocage révèle soit un manque d'influence, soit une réticence à prendre des risques.","Il attend la proposition pour présenter quelque chose de concret","Il est honnête — respectez son jugement"],c:1,e:"Un champion qui ne peut pas ou ne veut pas organiser l'accès à l'EB n'est pas un vrai champion pour ce deal. La réticence peut être liée à son manque d'influence réelle ou à la peur du rejet du projet."},
+      {q:"Pour développer un champion qui n'est pas encore convaincu, quelle est la démarche la plus efficace ?",opts:["Le mettre en copie de toutes vos communications","L'aider à comprendre ce que ce projet lui apporte personnellement, puis lui fournir les outils pour le défendre en interne","Lui offrir un cadeau commercial","Lui envoyer des plaquettes commerciales"],c:1,e:"Un champion se développe en alignant son intérêt personnel avec le succès du projet. Si la modernisation de l'infra fait de lui le DSI qui a 'transformé l'IT', il a une raison personnelle forte de défendre le projet."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Le champion qui promet mais ne livre pas",
+      doc:`<p><strong>Source :</strong> Échanges email — Commercial : Clara M. — Deal Winvex Industries</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Semaine 1 — Thomas (DSI) après la démo :<br>"Clara, votre solution est exactement ce qu'il nous faut. Je vais en parler à notre DG dès cette semaine."</em></p><p><em>Semaine 3 — Clara relance :<br>Thomas : "Pas encore, il a eu une semaine chargée."</em></p><p><em>Semaine 5 :<br>Thomas : "Le DG est en déplacement."</em></p><p><em>Semaine 7 :<br>Thomas : "Le DG est disponible mais je préfère attendre d'avoir votre proposition finale pour lui présenter quelque chose de concret."</em></p>`,
+      questions:[
+        {q:"Thomas est-il un champion au sens MEDDPICC ?",opts:["Oui — il est enthousiaste et a clairement indiqué son soutien","Trop tôt pour juger","Non — 7 semaines sans accès EB organisé révèle soit un manque d'influence, soit une réticence à prendre des risques","Oui s'il finit par organiser la réunion"],c:2,e:"Un champion réel ne laisse pas passer 7 semaines. Chaque semaine, une nouvelle excuse. Ce pattern révèle que Thomas soit n'a pas l'accès qu'il prétend, soit ne veut pas risquer une réponse négative du DG."},
+        {q:"Clara devrait-elle attendre la proposition pour que Thomas présente au DG ?",opts:["Oui — une proposition facilite la réunion DG","Ça dépend du montant","Oui — Thomas connaît mieux le bon timing","Non — attendre la proposition pour rencontrer l'EB est une erreur classique. La réunion EB doit précéder la proposition pour aligner les priorités."],c:3,e:"Envoyer une proposition sans avoir rencontré l'EB, c'est risquer de travailler des heures pour produire quelque chose qui ne résonne pas avec les priorités du DG."},
+        {q:"Quelle action Clara devrait prendre après la semaine 7 ?",opts:["Envoyer la proposition directement au DG","Chercher une autre entrée : demander à Thomas un email d'introduction préparé par Clara, ou trouver une autre entrée vers le DG","Attendre — Thomas finira par organiser","Abandonner le deal"],c:1,e:"Clara doit soit débloquer Thomas ('Thomas, voici un email que vous pouvez transférer à votre DG'), soit trouver une entrée alternative. L'inaction de Thomas ne peut pas bloquer l'accès à l'EB indéfiniment."}
+      ]
+    }
+  },
+
+  // 9 — COMPETITION
+  {
+    id:'competition', nav:'Competition', sub:'C — Module 9',
+    badge:'C — Competition', title:'C — Competition',
+    subtitle:"Identifier toutes les alternatives réelles — et se différencier sur la perception du client, pas sur ta propre opinion.",
+    blocks:[
+      {t:'prose',h:'Définition',p:`<p>La <strong>Competition</strong> dans MEDDPICC va bien au-delà des concurrents directs. Elle inclut toutes les alternatives que le client pourrait choisir à la place de ta solution :</p>`},
+      {t:'list',items:[{b:'Concurrents directs',t:" — Les autres fournisseurs proposant une solution similaire."},{b:'Solutions internes',t:" — Développement maison, IT interne qui pense 'on peut le faire nous-mêmes'."},{b:'Projets concurrents',t:" — D'autres initiatives en cours qui mobilisent le même budget ou la même attention."},{b:'Le statu quo',t:" — Ne rien faire. C'est souvent le concurrent le plus dangereux en PME."}]},
+      {t:'hl',v:'blue',lbl:'Règle clé',body:`La différenciation concurrentielle doit se faire sur <strong>la perception du client</strong>, pas sur ton opinion. Ce qui compte : comment le client perçoit ta solution vs les alternatives. Pas ce que toi tu penses de ton concurrent.`},
+      {t:'prose',h:'Stratégie face au concurrent prix',p:`<p>Dans la vente IT aux PME, tu rencontreras souvent un concurrent moins cher. La mauvaise réaction : baisser ton prix. La bonne réaction :</p><p>1. Identifier les <strong>Decision Criteria</strong> sur lesquels tu surpassses le concurrent.<br>2. Aider le client à pondérer ces critères davantage.<br>3. Quantifier le coût total de possession (TCO) : parfois le moins cher à l'achat coûte plus cher sur 3 ans.<br>4. Utiliser tes <strong>références clients</strong> dans le même secteur.</p>`},
+      {t:'hl',v:'amber',lbl:'⚠️ Le statu quo — Le concurrent oublié',body:`En PME, la décision "on ne fait rien" est courante. Le DG a d'autres priorités, le budget peut aller ailleurs, la douleur ne semble pas assez forte pour décider maintenant. <strong>Ton vrai rôle :</strong> quantifier le coût d'inaction pour rendre le statu quo plus douloureux que le changement.`},
+      {t:'questions',h:'Questions pour qualifier la compétition',qs:["Étudiez-vous d'autres options en parallèle ?","Avez-vous déjà travaillé avec certains de nos concurrents ? Quelle a été votre expérience ?","Y a-t-il d'autres projets en cours qui pourraient être en concurrence pour ce budget ?","Comment nous positionnez-vous par rapport aux autres options ?","Qu'est-ce qui vous ferait choisir une alternative à notre solution ?"]},
+      {t:'scenario',lbl:'🏭 NovaCorp — Paysage concurrentiel',p:`<p>Julien mentionne qu'une autre ESN régionale a aussi proposé une solution, 20% moins chère.</p><p><strong>Analyse concurrentielle :</strong><br>— Concurrent A : moins cher, mais hébergement en Allemagne (ne répond pas au critère contractuel de NovaCorp) ❌<br>— Votre ESN : hébergement France ✅, intégration Sage 100 confirmée ✅, SLA 99,9% garanti ✅</p><p>⚠️ <strong>Vrai concurrent : le statu quo.</strong> Sophie (EB) a d'autres projets en cours et peut vouloir repousser la décision à l'an prochain.</p><p>✅ <strong>Stratégie :</strong> Utiliser le Compelling Event (renouvellement grand compte dans 4 mois) pour rendre le statu quo inacceptable — et montrer que le concurrent A ne répond pas aux critères non-négociables.</p>`}
+    ],
+    quiz:[
+      {q:"Le concurrent A est moins cher. Ta première réaction devrait être :",opts:["Proposer un rabais conditionnel","Identifier si le concurrent répond aux critères non-négociables du client (ex: hébergement France) avant de parler de prix","Baisser immédiatement ton prix pour t'aligner","Attaquer la qualité du concurrent"],c:1,e:"Avant de parler de prix, vérifie si le concurrent répond vraiment aux critères du client. Dans NovaCorp, le concurrent A n'héberge pas en France — ce qui est un critère contractuel absolu. Le prix ne compte plus si le critère fondamental n'est pas rempli."},
+      {q:"Quel est souvent le concurrent le plus dangereux dans une vente IT en PME ?",opts:["Le plus grand acteur du marché","La solution interne de l'IT","La solution open-source","Le statu quo — ne rien faire"],c:3,e:"Le statu quo est le concurrent le plus commun et le plus sous-estimé. Le DG a d'autres priorités, le budget peut aller ailleurs. Ton rôle : rendre le coût d'inaction plus douloureux que le coût du changement."},
+      {q:"Comment se différencier efficacement d'un concurrent ?",opts:["En se positionnant sur les critères de décision du client, pas sur ton propre jugement de ta solution","En attaquant les faiblesses du concurrent directement","En baissant son prix en dernier recours","En listant toutes les fonctionnalités supérieures"],c:0,e:"La différenciation efficace se fait sur la perception du client, pas sur tes convictions. Quels critères sont importants pour lui ? Sur lesquels tu excelles ? C'est là que tu joues, pas sur une comparaison feature-by-feature que le client n'a pas demandée."},
+      {q:"Un prospect vous dit qu'il regarde d'autres options sans préciser lesquelles. Comment réagissez-vous ?",opts:["Demandez avec tact : 'Étudiez-vous d'autres ESN, ou considérez-vous aussi une solution interne ?'","Menacez de retirer votre offre","Respectez sa discrétion et attendez","Baissez votre prix pour sécuriser"],c:0,e:"La question ouverte et bienveillante distingue les types de concurrence (ESN vs solution interne vs statu quo) sans créer de tension, tout en obtenant les informations pour adapter votre positionnement."},
+      {q:"Vous découvrez en semaine 6 qu'un concurrent est évalué depuis la semaine 2. Que révèle cela sur votre contact ?",opts:["Que votre contact n'est probablement pas un vrai champion — un champion partage ce type d'information","Que vous avez perdu le deal","Que le prospect n'est pas fiable","Que vous étiez en faiblesse dès le départ"],c:0,e:"Un champion partage les informations stratégiques — notamment la présence de concurrents — parce qu'il veut vous aider à gagner. Ne pas vous informer d'un concurrent actif est un signal fort que votre contact n'est pas vraiment dans votre camp."},
+      {q:"Votre prospect est en train d'évaluer une solution interne ('notre équipe IT peut le faire'). Comment vous positionnez-vous ?",opts:["Déconseiller activement la solution interne","Expliquez que votre solution est techniquement supérieure","Quantifiez le coût réel de la solution interne : temps équipe IT, délai déploiement, maintenance, risque qualité — comparez avec votre TCO","Proposez un prix inférieur au coût estimé"],c:2,e:"La solution interne semble gratuite mais ne l'est pas. L'équipe IT a un coût, le projet prendra du temps, la maintenance sera continue. Un TCO honnête et comparatif démontre souvent que l'option interne est plus chère sur 3 ans."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — 'On regarde plusieurs options'",
+      doc:`<p><strong>Source :</strong> Notes de réunion — Commercial : Nicolas B. — Alain Dupré, DSI — Carbex (industrie, 160 personnes)</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Alain en fin de réunion : "C'est intéressant votre approche. On regarde plusieurs options en ce moment."</em></p><p><em>Nicolas : "Vous regardez d'autres ESN ?"</em></p><p><em>Alain : "Oui, entre autres. On a aussi un projet de refonte ERP en cours qui mobilise beaucoup de budget en ce moment."</em></p><p><em>Nicolas (note CRM) : "Concurrents ESN identifiés. Deal OK. Suite : envoyer proposition."</em></p>`,
+      questions:[
+        {q:"Nicolas a-t-il correctement identifié la compétition dans sa note CRM ?",opts:["Oui si les ESN ne répondent pas aux critères","Non — il a manqué le concurrent le plus dangereux : le projet ERP concurrent qui mobilise budget et attention","Oui — il a noté la présence de concurrents ESN","Oui — identifier les ESN suffit"],c:1,e:"Alain a révélé deux informations : d'autres ESN ET un projet ERP concurrent. Le projet ERP est potentiellement plus dangereux — il mobilise le même budget et la même bande passante managériale."},
+        {q:"La refonte ERP en cours représente quel type de concurrence ?",opts:["Une concurrence indirecte mineure","Un projet concurrent qui mobilise le même budget et la même attention — peut retarder ou tuer le deal","Une opportunité — vendre en même temps que l'ERP","Pas une vraie concurrence — c'est un projet différent"],c:1,e:"Un projet ERP en cours est une compétition pour le budget et pour le temps de l'EB. Si le DG doit choisir entre financer l'ERP et votre projet cloud, l'ERP peut gagner même si votre solution est objectivement meilleure."},
+        {q:"Quelle question Nicolas aurait dû poser sur le projet ERP ?",opts:["Peut-on intégrer notre solution avec votre futur ERP ?","Qui pilote le projet ERP ?","Quel est le calendrier et le budget de ce projet ERP ? Est-il en concurrence avec notre projet pour l'enveloppe de cette année ?","Quel ERP avez-vous choisi ?"],c:2,e:"La question budgétaire et calendaire est décisive. Si l'ERP démarre au Q3 et mobilise 80k€, votre projet de 40k€ sera probablement repoussé à l'année suivante. Le comprendre maintenant permet d'ajuster le timing ou de démontrer que les deux projets sont complémentaires."}
+      ]
+    }
+  },
+
+  // 10 — SCORECARD NOVACORP
+  {
+    id:'scorecard', nav:'Scorecard NovaCorp', sub:'Application — Module 10',
+    badge:'Application complète', title:'Scorecard NovaCorp — MEDDPICC en action',
+    subtitle:"Appliquer les 8 dimensions sur le deal fil rouge et construire un plan d'action complet.",
+    blocks:[
+      {t:'prose',h:'Le deal NovaCorp — État des lieux',p:`<p>Tu es en semaine 4 du cycle de vente avec NovaCorp. Tu as eu 3 réunions avec Julien (DSI), une call de 20 minutes avec Sophie (DG), et tu t'apprêtes à remettre une proposition. Score MEDDPICC du deal :</p>`},
+      {t:'scorecard'},
+      {t:'hl',v:'blue',lbl:'Analyse des risques',body:`Les dimensions en <strong>orange/rouge</strong> sont tes priorités immédiate.<br><br><strong>Paper Process inconnu</strong> → risque majeur : tu pourrais remettre une proposition et attendre 6 semaines sans savoir pourquoi.<br><strong>Competition partielle</strong> → le statu quo n'est pas traité. Sophie peut décider de repousser à l'an prochain.`},
+      {t:'prose',h:'Plan d\'action — les 5 next steps',p:`<p>Un plan d'action MEDDPICC efficace attribue chaque action à un owner avec une date précise :</p>`},
+      {t:'list',items:[{b:'[Toi, cette semaine]',t:" Appeler Julien pour qualifier le Paper Process complet : expert-comptable, avocat, DPA, délai signature."},{b:'[Julien, d\'ici 5 jours]',t:" Organiser un 2e appel de 30 min avec Sophie pour valider les métriques (pénalités, grand compte) et le calendrier."},{b:'[Toi, avant la proposition]',t:" Préparer un slide 'Coût d'inaction' chiffré pour la présentation à Sophie — adresser le statu quo."},{b:'[Julien, ongoing]',t:" Identifier un 2e champion (DAF ou responsable IT opérationnel) pour réduire le risque mono-champion."},{b:'[Toi, avant proposition]',t:" Confirmer par écrit les critères non-négociables (hébergement France, SLA, Sage 100) et obtenir la confirmation de Julien qu'ils s'appliquent bien à tous les décideurs."}]},
+      {t:'hl',v:'green',lbl:'✅ Points forts du deal',body:`Les <strong>Metrics</strong> sont solides et chiffrées. La <strong>douleur</strong> est forte et urgente (deux compelling events). Le <strong>champion</strong> Julien est aligné techniquement. Les <strong>Decision Criteria</strong> sont clairs et t'avantagent face au concurrent A.`}
+    ],
+    quiz:[
+      {q:"Le Paper Process de NovaCorp est 'inconnu'. Quelle est la bonne décision avant de remettre la proposition ?",opts:["Retarder la proposition jusqu'à avoir qualifié le Paper Process complet","Envoyer la proposition et inclure une note sur le Paper Process","Supposer qu'il n'y a pas de processus complexe car c'est une PME","Remettre la proposition maintenant et qualifier ensuite"],c:0,e:"Remettre une proposition sans connaître le Paper Process c'est naviguer à l'aveugle sur la dernière ligne droite. 5 minutes d'appel avec Julien peuvent révéler 4 semaines de délai supplémentaire à anticiper."},
+      {q:"Sophie (EB) dit qu'elle 'doit réfléchir encore'. Que fais-tu ?",opts:["Baisser le prix pour faciliter la décision","Attendre — l'EB a besoin de temps","Demander à Julien ce qui bloque et attendre sa réponse","Revenir sur le coût d'inaction et le Compelling Event — rendre le statu quo douloureux"],c:3,e:"'Je dois réfléchir' signifie souvent que la douleur n'est pas assez forte ou l'urgence pas assez claire. Revenir sur le coût d'inaction et les compelling events (renouvellement grand compte dans 4 mois) est l'action prioritaire."},
+      {q:"Quelle est la fragilité principale du deal NovaCorp en l'état ?",opts:["Le prix est trop élevé","Les métriques ne sont pas suffisantes","Julien est le seul champion et le Paper Process est inconnu","Le concurrent A est mieux positionné"],c:2,e:"Un seul champion + Paper Process inconnu = double risque. Si Julien change de poste ou si le Paper Process révèle 6 semaines de délais, le deal peut s'effondrer. Ces deux dimensions sont les priorités d'action immédiates."},
+      {q:"Vous avez rencontré Sophie une seule fois (20 min). Est-ce suffisant pour qualifier l'EB ?",opts:["Non — il faut une réunion de validation pour confirmer ses priorités et son angle de décision","Oui — vous connaissez son nom et son rôle","Oui si Julien a confirmé qu'elle est favorable","Oui pour une PME — les DG décident rapidement"],c:0,e:"Un call de 20 min donne un premier contact mais pas une qualification EB solide. Il faut une réunion dédiée pour valider : est-ce que Sophie partage la lecture des risques de Julien ? Quelles sont ses priorités personnelles ?"},
+      {q:"Le concurrent A ne répond pas au critère hébergement France. Le deal est-il gagné pour autant ?",opts:["Oui si Julien confirme que le concurrent A est disqualifié","Oui — les autres critères vous avantagent aussi","Oui — si le concurrent principal est éliminé, vous avez l'avantage","Non — le statu quo reste une option réelle et Sophie peut décider de repousser le projet"],c:3,e:"Éliminer un concurrent ne gagne pas le deal. Le statu quo reste la vraie alternative. Sophie peut toujours décider que moderniser l'infra n'est pas la priorité de l'année, peu importe que le concurrent soit disqualifié."},
+      {q:"Pour améliorer le score de NovaCorp sur les deux dimensions les plus faibles, quelles sont les deux actions prioritaires ?",opts:["Qualifier la compétition et baisser le prix","Trouver un 2e champion et envoyer la proposition","Baisser le prix et ajouter des fonctionnalités","Qualifier le Paper Process complet et organiser une vraie réunion de validation avec Sophie (EB)"],c:3,e:"Paper Process inconnu = risque de close date. EB insuffisamment qualifiée = risque de décision non informée. Ces deux dimensions couvrent les risques les plus immédiats. Les autres dimensions sont importantes mais moins urgentes."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — Pipeline review : trois deals à évaluer",
+      doc:`<p><strong>Source :</strong> Extraits CRM — Réunion Pipeline Review mensuelle</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><strong>Deal A — Proximed :</strong> EB rencontrée 2 fois, Metrics validées (35k€ coût d'inaction/an), Champion actif, Decision Criteria clairs, Reverse Timeline construit, Paper Process qualifié (avocat + 3 sem). Compelling Event : audit RGPD dans 6 semaines. <em>Probabilité affichée : 60%.</em></p><p><strong>Deal B — Granit SAS :</strong> Contact enthousiaste (DSI), 5 réunions en 8 semaines, démo très bien reçue. EB jamais rencontrée. Pain : "on veut moderniser". <em>Probabilité affichée : 80%.</em></p><p><strong>Deal C — Sofitel Logistics :</strong> EB rencontrée, Pain fort et chiffré, Decision Criteria inconnus, pas de Champion identifié, Paper Process non qualifié. <em>Probabilité affichée : 45%.</em></p>`,
+      questions:[
+        {q:"Quel deal a la probabilité de closing la plus réaliste selon MEDDPICC ?",opts:["Deal C — l'EB est rencontrée et la douleur est forte","Deal A — la plupart des dimensions sont qualifiées avec des preuves concrètes","Deal B — 80% et 5 réunions","Impossible à dire"],c:1,e:"Deal A est le mieux qualifié : EB rencontrée, Metrics validées, Champion actif, Paper Process connu, Compelling Event fort. 60% sous-estime probablement ce deal. Deal B à 80% repose sur l'enthousiasme sans EB qualifiée."},
+        {q:"Deal B est estimé à 80% mais l'EB n'a jamais été rencontrée. Comment recalibrez-vous ?",opts:["80% est correct si le DSI confirme que le DG est favorable","70% — l'enthousiasme compense","30-40% maximum — sans EB qualifiée, le deal peut s'effondrer à tout moment","80% reste correct car c'est une PME"],c:2,e:"80% sans EB est un chiffre dangereux qui fausse le forecast. Il reflète l'enthousiasme du commercial, pas la qualification. Sans EB, le deal peut être tué par quelqu'un qu'on n'a jamais rencontré."},
+        {q:"Deal C a un point fort (EB rencontrée, pain chiffré) mais plusieurs dimensions inconnues. Quelle est la priorité ?",opts:["Qualifier le Paper Process en priorité","Travailler sur la compétition","Qualifier les Decision Criteria et identifier un Champion avant d'aller plus loin","Envoyer la proposition pendant que la relation EB est chaude"],c:2,e:"Sans Decision Criteria, vous ne savez pas sur quels critères vous serez évalué. Sans Champion, vous n'avez pas de relais interne. Envoyer une proposition dans ce contexte, c'est envoyer un message bien écrit à quelqu'un qui n'a pas les outils pour décider."}
+      ]
+    }
+  },
+
+  // 11 — DEAL REVIEW
+  {
+    id:'dealreview', nav:'Deal Review & CRM', sub:'Opérationnel — Module 11',
+    badge:'Module 11 — Opérationnel', title:'Deal Review & CRM — Rendre MEDDPICC visible',
+    subtitle:"MEDDPICC ne crée de la valeur que s'il est intégré dans les routines quotidiennes et dans le CRM.",
+    blocks:[
+      {t:'prose',h:"De la méthode à l'habitude",p:`<p>MEDDPICC sans discipline d'exécution reste un cadre théorique. Les organisations qui en tirent le plus de valeur sont celles qui l'ont transformé en <strong>langage commun</strong> — visible dans le CRM, au cœur des deal reviews, dans les cadences managériales.</p><p>En tant que commercial en ESN, voici comment l'intégrer dans ton quotidien sans que ce soit une charge administrative supplémentaire.</p>`},
+      {t:'prose',h:'Les champs CRM minimum viables',p:`<p>L'objectif : transformer chaque lettre de MEDDPICC en données structurées dans HubSpot, pas en notes dispersées. Les champs minimum à créer :</p>`},
+      {t:'list',items:[{b:'Metrics',t:" — Baseline / Cible / Valeur estimée (€) / Horizon / Validé par EB ? (O/N)"},{b:'Economic Buyer',t:" — Nom + Rôle + Date dernier échange + Accès obtenu ? (O/N)"},{b:'Decision Criteria',t:" — Critères listés + Critères non-négociables identifiés (O/N)"},{b:'Decision Process',t:" — Étapes + Jalons datés + Multi-thread (O/N)"},{b:'Paper Process',t:" — Approbateurs identifiés + Délais estimés + DPA requis ? (O/N)"},{b:'Pain',t:" — Pain statement + Compelling event + Chiffré (O/N)"},{b:'Champion',t:" — Nom + Influence testée (O/N) + 2e champion identifié ? (O/N)"},{b:'Competition',t:" — Concurrents en lice + Statu quo adressé ? (O/N)"}]},
+      {t:'hl',v:'blue',lbl:'La deal review MEDDPICC',body:`Une deal review efficace n'est pas un tour de table sur les valeurs et stages. C'est une <strong>inspection de la qualité des preuves</strong>.<br><br>Format recommandé (25–30 min par deal stratégique) :<br>1. Score RAG rapide (vert/orange/rouge/inconnu) pour chaque lettre<br>2. 2 questions "preuve" sur les dimensions faibles<br>3. 1 à 3 actions datées pour combler les gaps (owner + date)`},
+      {t:'cards',n:2,cards:[{ico:'✅',name:'Bonne deal review',p:"'Le Paper Process est orange — on ne connaît pas le délai juridique. Action : Julien appelle l'avocat de Sophie avant vendredi pour estimer le délai. Owner : Julien. Date : vendredi.'"},{ico:'❌',name:'Mauvaise deal review',p:"'NovaCorp avance bien, Julien est chaud, la proposition part lundi.' → Pas de preuve, pas d'action précise, pas de risque identifié. C'est une update, pas une deal review."}]},
+      {t:'prose',h:'La cadence hebdomadaire',p:`<p>Pour rendre MEDDPICC opérationnel au quotidien, adopte cette habitude simple :</p><p><strong>Chaque lundi matin (15 min)</strong> : pour chaque deal actif, passe mentalement en revue les 8 lettres. Quelle est la dimension la plus faible ? Quelle est l'action de la semaine pour la renforcer ?</p><p>Une seule action prioritaire par deal par semaine. Pas de liste de 12 tâches — une action, un owner, une date.</p>`},
+      {t:'hl',v:'green',lbl:'💡 Le principe de "one unknown = one action"',body:`Pour chaque dimension MEDDPICC qui est <strong>inconnue ou rouge</strong>, il doit y avoir une action datée dans le pipeline. Pas de deal qualifié "vert" si une dimension reste inconnue depuis plus de 2 semaines. C'est la règle qui empêche les forecasts optimistes de masquer des deals fragiles.`}
+    ],
+    quiz:[
+      {q:"Quelle est la principale valeur d'intégrer MEDDPICC dans le CRM ?",opts:["Générer des rapports pour les investisseurs","Transformer les preuves de qualification en données structurées visibles et coachables par le management","Réduire le nombre d'emails internes","Automatiser l'envoi des propositions"],c:1,e:"MEDDPICC dans le CRM crée un langage commun visible : le management peut coacher sur les gaps, les commerciaux peuvent se challenger mutuellement, et les forecasts reposent sur des preuves plutôt que sur des impressions."},
+      {q:"En deal review, un commercial dit : 'NovaCorp avance bien, la proposition part lundi.' C'est :",opts:["Une update de statut, pas une deal review. Aucune dimension MEDDPICC n'a été qualifiée ou challengée","Une deal review suffisante pour les petits deals","Un bon résumé si le deal est en phase finale","Une bonne deal review — l'essentiel est dit"],c:0,e:"'Ça avance bien' n'est pas une qualification. Une deal review MEDDPICC interroge les preuves : quel est le score de chaque dimension ? Quelle est la dimension la plus faible ? Quelle action pour la semaine ?"},
+      {q:"Qu'est-ce que le principe 'one unknown = one action' signifie concrètement ?",opts:["Pour chaque réunion, créer une tâche de suivi","Pour chaque dimension MEDDPICC inconnue, il doit y avoir une action datée pour la qualifier","Pour chaque client inconnu, créer une action de prospection","Pour chaque competitor inconnu, faire une recherche de marché"],c:1,e:"Si une dimension reste inconnue, c'est une bombe à retardement dans le pipeline. Le principe impose de transformer chaque inconnue en action concrete : qui pose la question ? quand ? Ce mécanisme est ce qui distingue un pipeline 'propre' d'un pipeline optimiste."},
+      {q:"Lors d'une deal review, un commercial dit 'Paper Process orange — l'avocat prend 3 semaines, action : Julien confirme le délai avant vendredi'. C'est :",opts:["Une bonne deal review — dimension qualifiée, gap identifié, action datée avec owner","Correct seulement pour les deals complexes","Trop détaillé — une deal review doit rester de haut niveau","Insuffisant — il faudrait aussi qualifier toutes les autres dimensions"],c:0,e:"C'est exactement le format attendu : dimension scorée, gap précis, action avec owner et date. Une deal review MEDDPICC efficace produit ce type d'output pour chaque dimension faible."},
+      {q:"Pourquoi les forecasts basés sur le 'gut feeling' du commercial sont-ils problématiques ?",opts:["Ils ne reposent pas sur des preuves qualifiées et créent des surprises de closing","Ils donnent des résultats trop optimistes","Ils prennent trop de temps à produire","Ils ne le sont pas — l'expérience du commercial est précieuse"],c:0,e:"Le gut feeling peut trahir : les commerciaux ont naturellement tendance à surestimer leurs chances. MEDDPICC force à s'appuyer sur des preuves concrètes pour chaque dimension — ce qui produit des forecasts plus fiables."},
+      {q:"Quelle est la cadence recommandée pour appliquer MEDDPICC sur ses deals actifs ?",opts:["Une fois par trimestre","Uniquement lors des deal reviews mensuelles","Uniquement quand un deal semble bloqué","Chaque semaine : pour chaque deal actif, identifier la dimension la plus faible et définir une action"],c:3,e:"L'habitude hebdomadaire de 15 min — passer les 8 dimensions en revue, identifier la plus faible, définir une action — est ce qui transforme MEDDPICC d'une méthode théorique en réflexe opérationnel."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas — La deal review qui révèle tout",
+      doc:`<p><strong>Source :</strong> Extrait deal review — Manager : Sophie V. — Commercial : Romain D. — Deal Axeltech</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Sophie : "Axeltech, tu m'en dis quoi ?"</em></p><p><em>Romain : "Ça avance bien. Le DSI est très chaud, on a fait 3 démos, la proposition part lundi."</em></p><p><em>Sophie : "L'EB, c'est qui ?"</em></p><p><em>Romain : "Le DSI, je pense."</em></p><p><em>Sophie : "Tu penses ? Vous avez parlé budget ?"</em></p><p><em>Romain : "Pas encore, mais c'est dans les cordes."</em></p><p><em>Sophie : "Paper Process ?"</em></p><p><em>Romain : "Pas encore creusé..."</em></p><p><em>Sophie : "Compelling event ?"</em></p><p><em>Romain : "...ils ont envie d'avancer."</em></p>`,
+      questions:[
+        {q:"Combien de dimensions MEDDPICC sont réellement qualifiées dans ce deal ?",opts:["4 à 5 — le DSI est engagé et la démo bien reçue","3 — Metrics, Champion et Pain sont partiellement couverts","1 maximum — le contact est enthousiaste mais presque rien n'est qualifié","6 — il manque juste EB et Paper Process"],c:2,e:"En lisant attentivement : EB inconnue (Romain 'pense' que c'est le DSI), budget non discuté, Paper Process non exploré, Compelling Event absent. Ce deal repose entièrement sur l'enthousiasme d'un contact. Envoyer la proposition lundi serait prématuré."},
+        {q:"La deal review de Sophie est-elle une bonne deal review ?",opts:["Non — elle aurait dû laisser Romain finir son update","Oui — elle challenge chaque dimension avec des questions de preuve, exactement ce qu'une deal review MEDDPICC doit faire","Non — elle est trop agressive avec Romain","Oui mais uniquement parce qu'elle est la manager"],c:1,e:"Sophie applique parfaitement la deal review MEDDPICC : elle ne se contente pas de l'update, elle challenge chaque dimension en demandant des preuves. C'est ce type d'inspection qui révèle les deals fragiles avant qu'ils échouent."},
+        {q:"Quelle action immédiate Romain devrait-il prendre AVANT d'envoyer la proposition lundi ?",opts:["Envoyer la proposition comme prévu — le DSI validera","Qualifier l'EB (qui a vraiment l'autorité budgétaire ?), discuter budget, et explorer le Paper Process minimalement","Retravailler la proposition pour la rendre plus solide","Demander au DSI de confirmer par email son intention d'achat"],c:1,e:"Envoyer une proposition sans EB qualifiée et sans budget discuté, c'est envoyer une proposition dans le vide. 2 appels de 20 min cette semaine peuvent révéler que l'EB est le DG — et que le DSI n'a pas l'autorité pour valider 45 000€."}
+      ]
+    }
+  },
+
+  // 12 — SYNTHÈSE
+  {
+    id:'synthese', nav:'Synthèse & Checklist', sub:'Final — Module 12',
+    badge:'Module final', title:'Synthèse — MEDDPICC en une page',
+    subtitle:"La checklist complète, les questions clés, et les prochaines étapes pour appliquer dès demain.",
+    blocks:[
+      {t:'hl',v:'purple',lbl:'Récapitulatif des 8 dimensions',body:`<strong>M — Metrics</strong> : Chiffrer la valeur. Baseline → Cible → Coût d'inaction.<br><strong>E — Economic Buyer</strong> : Qui peut signer ou tuer le deal ? Accès obtenu ?<br><strong>D — Decision Criteria</strong> : Explicites et implicites. Les influencer tôt.<br><strong>D — Decision Process</strong> : Reverse timeline. Multi-threading.<br><strong>P — Paper Process</strong> : Achats, juridique, sécurité, DPA. Qualifier tôt.<br><strong>I — Identify Pain</strong> : Douleur forte, chiffrée, urgente. Compelling event.<br><strong>C — Champion</strong> : Enthousiasme + Influence + Accès. Tester par l'action.<br><strong>C — Competition</strong> : Concurrents + statu quo. Se différencier sur les critères du client.`},
+      {t:'prose',h:'Les 5 principes non-négociables',p:`<p><strong>1. Zéro supposition</strong> — Ce qui n'est pas prouvé est "inconnu". Jamais "supposé vert".<br><strong>2. Preuves, pas impressions</strong> — Chaque dimension doit être justifiée par un fait, une date, un chiffre.<br><strong>3. Action sur chaque inconnu</strong> — Un inconnue = une action datée avec un owner.<br><strong>4. Discipline continue</strong> — MEDDPICC n'est pas une checklist de début de deal. C'est une inspection permanente.<br><strong>5. Champion testé</strong> — Un champion ne se déclare pas, il se prouve par ses actions.</p>`},
+      {t:'prose',h:'Prochaines étapes — appliquer dès demain',p:`<p>Pour passer de la formation à la pratique :</p>`},
+      {t:'list',items:[{b:'Cette semaine',t:" — Prends un deal actif dans ton pipeline. Passe les 8 dimensions en revue. Quels sont les inconnus ? Quelles sont les dimensions rouges ?"},{b:'Ce mois-ci',t:" — Crée les champs MEDDPICC dans HubSpot. Même basiques : un champ 'score RAG' par dimension suffit pour commencer."},{b:'Dans 3 mois',t:" — Identifie un deal gagné et un deal perdu. Analyse-les avec MEDDPICC : quelle dimension t'a sauvé ? laquelle t'a manqué ?"},{b:'Sur le long terme',t:" — Propose une cadence de deal review avec ton manager basée sur le scoring MEDDPICC. C'est le meilleur levier de progrès."}]},
+      {t:'scenario',lbl:'📚 Ressources pour aller plus loin',p:`<p><strong>Livres :</strong><br>— "Always Be Qualifying" (Darius Lahoutifard) — la bible de MEDDIC par son co-créateur<br>— "The Challenger Sale" — complément sur le profil commercial qui crée de la valeur</p><p><strong>Outils :</strong><br>— Scorecard 1-5 par dimension (intégrable dans HubSpot)<br>— Template de deal review MEDDPICC (15 questions de coaching)<br>— Question bank de discovery (à adapter à votre contexte)</p><p><strong>À pratiquer :</strong><br>— Jeux de rôle discovery avec un collègue — 30 minutes/semaine<br>— Reverse timeline sur chaque nouveau deal dès la 2e réunion</p>`},
+      {t:'hl',v:'green',lbl:'🎯 Objectif final',body:`MEDDPICC n'est pas une check-box à cocher avant de passer à autre chose. C'est un <strong>état d'esprit de qualification permanente</strong>.<br><br>Le commercial MEDDPICC ne se demande pas "comment je vends ?" — il se demande <em>"est-ce que ce deal est réellement qualifié ? Qu'est-ce qui pourrait me faire rater ce closing ?"</em><br><br>Cette façon de penser, une fois ancrée, change fondamentalement la qualité de ton pipeline — et tes résultats.`}
+    ],
+    quiz:[
+      {q:"Un deal a des métriques solides, un champion enthousiaste, et un EB favorable. Mais le Paper Process est inconnu depuis 3 semaines. Ce deal est :",opts:["Vert — les dimensions principales sont qualifiées","Orange / à risque — un Paper Process inconnu peut retarder ou bloquer la signature","Rouge — il faut tout recommencer","Vert si la close date est dans 2 mois"],c:1,e:"Un Paper Process inconnu est un risque concret sur la close date — peu importe la qualité des autres dimensions. 'One unknown = one action' : qualifier le Paper Process cette semaine."},
+      {q:"Quelle est la différence entre un pipeline 'actif' et un pipeline 'qualifié' selon MEDDPICC ?",opts:["Un pipeline qualifié repose sur des preuves pour chaque dimension, pas sur des impressions et des suppositions","Un pipeline actif génère plus de réunions","Un pipeline actif a plus d'opportunités","Il n'y a pas de différence — actif et qualifié sont synonymes"],c:0,e:"Un pipeline actif peut être plein de deals qui ne se closeront jamais, basés sur des suppositions optimistes. Un pipeline qualifié MEDDPICC repose sur des preuves pour chaque dimension. Moins de deals, mais plus fiables — et une capacité à prioriser les efforts là où ils ont le plus d'impact."},
+      {q:"Quelle est la première chose à faire pour appliquer MEDDPICC sur un deal existant ?",opts:["Passer les 8 dimensions en revue sur ce deal : quels sont les inconnus ? les rouges ? les actions prioritaires ?","Refaire toute la discovery depuis le début","Envoyer un questionnaire MEDDPICC au prospect","Attendre le prochain deal pour appliquer la méthode proprement"],c:0,e:"MEDDPICC s'applique à n'importe quel stade du deal. La première action : faire le tour des 8 dimensions et identifier les gaps. Les inconnus deviennent des actions. Les rouges deviennent des priorités. C'est applicable dès aujourd'hui sur un deal existant."},
+      {q:"Un commercial avec 3 ans d'expérience dit : 'Je connais mes clients, je n'ai pas besoin de MEDDPICC.' Que lui répondez-vous ?",opts:["L'expérience et la méthode sont complémentaires. MEDDPICC force à documenter ce que l'expérience rend intuitif — et à le rendre coachable, prévisionnel et transmissible.","Il a tort — l'expérience ne vaut rien sans méthode","Il devrait appliquer MEDDPICC uniquement sur ses gros deals","Il a raison — l'expérience remplace la méthode"],c:0,e:"L'expérience est précieuse mais invisible. MEDDPICC rend la qualification explicite, documentée et partageable. Un pipeline basé sur l'intuition de plusieurs commerciaux est imprévisible. MEDDPICC crée un langage commun qui améliore tout le monde."},
+      {q:"Quel est l'indicateur le plus fiable qu'un deal est vraiment bien qualifié ?",opts:["Le client est enthousiaste et répond vite","La probabilité de closing affichée dans le CRM","Chaque dimension MEDDPICC est scorée avec une preuve concrète et chaque inconnue a une action datée","Le nombre de réunions effectuées"],c:2,e:"Un deal bien qualifié ne se mesure pas au nombre de réunions ni à l'enthousiasme — il se mesure à la qualité des preuves par dimension. Si chaque lettre de MEDDPICC est documentée avec un fait, une date ou un chiffre, le deal est qualifié."},
+      {q:"MEDDPICC est-il applicable uniquement aux commerciaux, ou a-t-il d'autres usages ?",opts:["Uniquement en B2B SaaS","Uniquement aux deals supérieurs à 50 000€","Uniquement aux commerciaux terrain","À tous ceux qui touchent le cycle de vente : avant-vente (technique), management (coaching deals), customer success (renouvellements)"],c:3,e:"MEDDPICC structure la pensée de qualification pour tous ceux qui touchent un deal. L'avant-vente utilise Decision Criteria et Pain pour préparer les démos. Le management l'utilise pour coacher. Le CS l'utilise pour qualifier les renouvellements à risque."}
+    ],
+    caseStudy:{
+      label:"📋 Étude de cas finale — Retour sur un deal perdu",
+      doc:`<p><strong>Source :</strong> Analyse post-mortem — Commercial : Marc T. — Deal Zenova (SaaS BTP, 200 personnes) — Deal perdu après 3 mois</p><hr style="border:none;border-top:1px solid var(--border);margin:10px 0"><p><em>Timeline :</em></p><p><em>Mois 1 : 4 réunions avec le DSI Thomas, très enthousiaste. Démo validée, solution appréciée.</em></p><p><em>Mois 2 : Proposition envoyée (55 000€). Retour positif du DSI : "c'est exactement ce qu'on cherche".</em></p><p><em>Mois 3 : Deal perdu. Explication du DSI : "Le DG a décidé de repousser le projet à l'an prochain — d'autres priorités budget."</em></p><p><em>Score MEDDPICC reconstruit a posteriori : M=Orange, E=Rouge, D=Orange, D=Orange, P=Inconnu, I=Orange, C=Orange, C=Inconnu.</em></p>`,
+      questions:[
+        {q:"Quelle dimension MEDDPICC explique principalement la perte de ce deal ?",opts:["E — l'Economic Buyer (DG) n'a jamais été rencontré ni qualifié","M — les métriques n'étaient pas assez solides","C — le champion n'était pas assez fort","C — la compétition n'a pas été gérée"],c:0,e:"Le DG a décidé seul, sans que Marc ait jamais eu l'occasion de l'influencer. L'enthousiasme du DSI était réel mais insuffisant — il n'avait pas l'autorité pour protéger le deal contre une décision budgétaire de la direction."},
+        {q:"Si Marc avait rencontré le DG au mois 1, qu'aurait-il pu éviter ?",opts:["Il aurait évité 3 mois de travail inutile","Il aurait pu qualifier les vraies priorités du DG et adresser le risque de compétition budgétaire dès le début — et peut-être positionner le projet différemment","Rien — si le DG avait d'autres priorités, rien ne pouvait changer","Il aurait pu envoyer la proposition plus tôt"],c:1,e:"Rencontrer l'EB tôt permet de qualifier ses priorités réelles — pas seulement celles du champion technique. Si le DG avait d'autres projets prioritaires, Marc aurait pu le savoir et adapter sa stratégie : créer un Compelling Event, phaser le projet, ou qualifier si le timing était bon."},
+        {q:"Quel enseignement principal tirer de ce post-mortem ?",opts:["Toujours demander le budget dès la première réunion","Ne jamais travailler avec des DSI — ils ne sont jamais les vrais décisionnaires","L'enthousiasme d'un contact technique ne remplace pas la qualification de l'EB. Un deal bien engagé techniquement peut échouer si l'EB n'a pas été aligné sur les priorités et les contraintes budgétaires.","Ne pas envoyer de proposition avant 3 mois de qualification"],c:2,e:"Ce deal illustre parfaitement pourquoi l'EB est non-négociable. Thomas était convaincu, sincère, et enthousias — mais sans autorité. Le DG a pris une décision budgétaire que Marc n'a jamais eu la chance d'influencer. C'est la cause de perte la plus fréquente et la plus évitable."}
+      ]
+    }
+  }
+,
+
+  // ═══════════════════ MODULE 13 — TECHSPRINT CAS COMPLET ═══════════════════
+  {
+    id:'techsprint', nav:'Cas complet — TechSprint', sub:'Cas avancé — Module 13',
+    badge:'Module 13 — Cas avancé', title:'TechSprint — Qualifier un deal ambigu',
+    subtitle:"Un deal qui semble bien engagé... mais l'est-il vraiment ? Appliquer MEDDPICC sur un cas complexe avec des signaux contradictoires.",
+    blocks:[
+      {t:'hl',v:'blue',lbl:'🎯 Objectif de ce module',body:`Dans les modules précédents, tu as appris chaque dimension de MEDDPICC séparément. Ce module teste ta capacité à <strong>tout combiner</strong> face à un deal réel avec des signaux mixtes.<br><br>Lis attentivement le dossier TechSprint. Certains éléments semblent positifs. D'autres cachent des risques. Ton rôle : identifier ce qui est réellement qualifié, ce qui ne l'est pas, et ce qu'il faut faire.`},
+      {t:'prose',h:'Le dossier TechSprint',p:`<p>TechSprint est une ESN de 240 personnes spécialisée dans le développement logiciel, basée à Bordeaux. Ils cherchent à moderniser leur infrastructure cloud pour leurs équipes de développement réparties sur 4 sites en France.</p>`},
+      {t:'hl',v:'blue',lbl:'📁 Contexte commercial — Semaine 1',body:`<strong>Origine :</strong> Appel entrant — Guillaume Ferrand, DSI de TechSprint, a trouvé votre ESN via LinkedIn.<br><br><strong>Échange initial :</strong> Guillaume explique qu'ils ont des problèmes de synchronisation de code entre les sites, des environnements de dev instables, et que les équipes perdent du temps. Il est enthousiaste, technique, et connaît bien le sujet. Il mentionne un "budget disponible" et dit vouloir "avancer rapidement".<br><br><strong>Première réunion :</strong> 2h de discussion technique avec Guillaume. Il présente l'environnement actuel, les pain points en détail. Il mentionne que "la direction est favorable" au projet.`},
+      {t:'hl',v:'blue',lbl:'📁 Évolution du deal — Semaines 2 à 5',body:`<strong>Semaine 2 :</strong> Démo technique — très bien reçue. Guillaume invite deux de ses ingénieurs seniors. Ils posent des questions pointues et semblent convaincus.<br><br><strong>Semaine 3 :</strong> Guillaume demande une proposition détaillée. Il précise : "On a un budget de 80 000€ alloué." Il mentionne qu'une autre ESN propose quelque chose mais "votre approche est meilleure techniquement".<br><br><strong>Semaine 4 :</strong> Tu envoies la proposition (72 000€). Guillaume répond : "C'est dans nos cordes, je présente ça à notre CEO la semaine prochaine."<br><br><strong>Semaine 5 :</strong> Guillaume t'appelle : "Le CEO est intéressé mais il veut voir comment ça s'intègre avec notre stratégie de croissance. Il a quelques questions." Il demande une réunion à 3 (toi, lui, le CEO) pour la semaine 6.`},
+      {t:'hl',v:'amber',lbl:'📁 Semaine 6 — Réunion CEO',body:`Tu rencontres <strong>Isabelle Morin, CEO de TechSprint</strong>, pour la première fois. Pendant la réunion :<br><br>— Elle pose des questions sur la réversibilité : "On ne veut pas se retrouver locked-in dans 2 ans."<br>— Elle demande des références de clients ESN utilisant votre solution.<br>— Elle mentionne : "On a une levée de fonds en cours, la gestion du cash est importante."<br>— Elle dit : "Je dois en discuter avec notre DAF — c'est lui qui valide les engagements pluriannuels."<br><br>Guillaume était silencieux pendant la majeure partie de la réunion.`},
+      {t:'hl',v:'blue',lbl:'📁 Semaines 7 à 9 — La zone d\'ombre',body:`<strong>Semaine 7 :</strong> Guillaume : "Le CEO et le DAF regardent ça ensemble. C'est en bonne voie."<br><br><strong>Semaine 8 :</strong> Relance email. Réponse de Guillaume 3 jours après : "Toujours en cours de discussion en interne."<br><br><strong>Semaine 9 :</strong> Guillaume t'appelle : "Bonne nouvelle — Isabelle est favorable. Mais le DAF veut un étalement de paiement sur 3 ans plutôt qu'un paiement annuel. Et il a des questions sur les clauses de sortie du contrat."<br><br><strong>Note CRM actuelle :</strong> "Deal avancé. Guillaume très engagé. CEO favorable. Proposition 72k€. Close date : fin du mois. Probabilité : 75%."`},
+      {t:'scenario',lbl:'📊 Votre mission — Scorer ce deal',p:`<p>En te basant sur tout ce que tu as lu, passe les 8 dimensions MEDDPICC en revue. Certaines sont solides, certaines sont partielles, certaines sont problématiques. Les questions suivantes vont tester ta lecture du deal.</p><p>⚠️ <strong>Conseil :</strong> Méfie-toi des signaux positifs de surface (Guillaume enthousiaste, CEO "favorable", budget annoncé). Cherche les preuves réelles derrière chaque dimension.</p>`}
+    ],
+    quiz:[
+      {q:"Qui est l'Economic Buyer de TechSprint selon les informations disponibles ?",opts:["Les ingénieurs seniors qui ont participé à la démo","Isabelle Morin (CEO) — mais le DAF valide les engagements pluriannuels, donc potentiellement les deux","Guillaume Ferrand — il a mentionné le budget et pilote le projet","Guillaume et Isabelle conjointement"],c:1,e:"Isabelle est la CEO et l'EB apparente, mais elle a elle-même dit que le DAF valide les engagements pluriannuels. Pour un contrat de 72 000€ sur 3 ans, le DAF est co-EB ou EB réel. Problème : le DAF n'a jamais été rencontré."},
+      {q:"Guillaume a annoncé 'un budget de 80 000€ alloué'. Ces Metrics sont-elles qualifiées ?",opts:["Partiellement — budget annoncé par le DSI mais la levée de fonds en cours et la gestion du cash mentionnée par la CEO créent un doute sur la disponibilité réelle","Oui — budget explicite, supérieur au prix proposé","Oui si Guillaume confirme par écrit","Non — un budget annoncé verbalement n'est jamais fiable"],c:0,e:"La levée de fonds en cours est un signal important. La CEO a mentionné que 'la gestion du cash est importante' — ce qui peut signifier que le budget théorique existe mais que son utilisation immédiate est sous pression. Le DAF doit confirmer la disponibilité réelle du budget."},
+      {q:"Quelle dimension MEDDPICC est la plus problématique en semaine 9 ?",opts:["Competition — l'autre ESN n'a pas été qualifiée","Metrics — le budget n'est pas confirmé","Champion — Guillaume devient silencieux","Paper Process — étalement paiement + clauses de sortie non qualifiées + DAF jamais rencontré"],c:3,e:"Le Paper Process concentre plusieurs risques : le DAF (potentiellement co-EB) n'a jamais été rencontré, il veut un étalement sur 3 ans (impact sur votre cashflow et votre proposition), et les clauses de sortie sont en question. Ce sont des éléments qui peuvent retarder ou tuer le deal."},
+      {q:"Guillaume est silencieux lors de la réunion CEO. Que révèle ce comportement ?",opts:["Il prépare une surprise positive","Il est épuisé par 6 semaines de processus","Signal d'alarme : son influence et son rôle de champion sont peut-être plus limités qu'il ne le laissait entendre face à l'EB","Il a confiance en vous — il laisse la CEO poser ses questions"],c:2,e:"Un champion fort parle en votre faveur lors des réunions avec l'EB. Il prépare la réunion, anticipe les objections, intervient pour vous soutenir. Guillaume silencieux révèle soit qu'il ne maîtrise pas la relation CEO, soit que son influence est plus technique que politique."},
+      {q:"La CEO mentionne 'des références de clients ESN'. Comment évaluez-vous votre position concurrentielle ?",opts:["Incertaine — un critère implicite fort vient d'émerger (référence ESN) et vous ne savez pas si vous pouvez le satisfaire","Forte — votre approche est techniquement meilleure selon Guillaume","Faible — l'autre ESN a probablement des références","Neutre — les références ne sont pas déterminantes en B2B"],c:0,e:"Un critère implicite fort vient d'émerger lors de la réunion CEO — des références dans le secteur ESN. Si vous n'avez pas ces références, c'est un gap à adresser immédiatement. Ce critère peut peser plus lourd que les 'références formelles' du processus de sélection."},
+      {q:"La note CRM indique 'Probabilité : 75%'. Est-ce justifié ?",opts:["Oui si Guillaume confirme que le DAF va valider","Oui — CEO favorable, budget dans les cordes, champion engagé","Non — DAF non rencontré, Paper Process non qualifié, critère référence ESN non adressé, levée de fonds crée une incertitude budgétaire. 40-50% serait plus honnête.","Oui pour un deal de cette taille et de cette maturité"],c:2,e:"75% est un chiffre optimiste basé sur des signaux positifs de surface. Les risques réels : DAF jamais rencontré et potentiellement co-EB, Paper Process avec étalement de paiement à négocier, critère ESN references potentiellement bloquant, incertitude budgétaire liée à la levée de fonds."},
+      {q:"Quelle est l'action la PLUS urgente à prendre en semaine 9 ?",opts:["Baisser le prix pour débloquer le DAF","Relancer la CEO directement par email","Envoyer une nouvelle version de la proposition avec l'étalement sur 3 ans","Demander à Guillaume d'organiser une réunion avec le DAF — identifier ses critères, son rôle dans la décision, et qualifier les questions sur les clauses de sortie"],c:3,e:"Le DAF est un acteur critique non qualifié. Rencontrer le DAF permet de qualifier si c'est un co-EB, de comprendre ses critères sur les clauses de sortie, et de proposer proactivement une structure de paiement adaptée plutôt que d'attendre ses questions."},
+      {q:"La levée de fonds en cours chez TechSprint est :",opts:["Un signal négatif — il vaut mieux attendre que la levée soit complète","Une bonne nouvelle — une levée de fonds signifie plus de budget","Sans impact sur le deal","Un Compelling Event potentiel ET un risque : la croissance prévue peut justifier l'investissement, mais la gestion du cash peut retarder la décision"],c:3,e:"La levée de fonds est ambivalente. D'un côté : si TechSprint lève des fonds pour croître, moderniser l'infra est cohérent avec cette croissance (Compelling Event potentiel). De l'autre : pendant une levée, la gestion du cash est scrutée à la loupe — le DAF peut freiner les engagements pluriannuels."},
+      {q:"Quel score RAG attribuez-vous au Champion (Guillaume) en semaine 9 ?",opts:["Orange — enthousiaste et utile techniquement, mais influence limitée sur la CEO, silencieux en réunion EB, et son accès au DAF est inconnu","Rouge — il ne sert plus à rien","Vert si vous lui donnez des arguments pour défendre le deal","Vert — il est engagé depuis le début et vous a ouvert l'accès à la CEO"],c:0,e:"Orange est le score juste. Guillaume a de la valeur : il a ouvert le deal, organisé la démo, facilité l'accès à la CEO. Mais son silence lors de la réunion CEO et son accès inconnu au DAF révèlent des limites. Il est plus coach que champion au sens strict."},
+      {q:"Score MEDDPICC global du deal TechSprint en semaine 9. Combien de dimensions sont vraiment vertes ?",opts:["7 — seul le DAF manque","4 — Metrics, Champion, Pain, Decision Process","5 à 6 — le deal est bien avancé","2 maximum — Decision Criteria partiellement connus et Pain identifié. Tout le reste est orange ou inconnu."],c:3,e:"En appliquant rigoureusement MEDDPICC : M=Orange (budget sous pression levée), E=Orange (CEO vue, DAF jamais rencontré), DC=Orange (critère ESN réf émergent), DP=Orange (processus rallongé par DAF), PP=Rouge (étalement, clauses sortie, DAF), I=Vert (pain réel et chiffré), Champion=Orange, Compétition=Orange. Aucune dimension vraiment verte sauf Pain."}
+    ],
+    caseStudy:{
+      label:"📋 Synthèse — Plan d'action TechSprint",
+      doc:`<p><strong>Vous êtes en semaine 9. La close date est dans 3 semaines. Voici le récapitulatif MEDDPICC :</strong></p>
+<hr style="border:none;border-top:1px solid var(--border);margin:10px 0">
+<p>🟡 <strong>Metrics</strong> — Budget 80k€ annoncé par DSI. Levée de fonds = incertitude cash.</p>
+<p>🟡 <strong>Economic Buyer</strong> — CEO vue une fois. DAF jamais rencontré mais valide les engagements pluriannuels.</p>
+<p>🟡 <strong>Decision Criteria</strong> — Critères techniques connus. Référence ESN émergente. Réversibilité importante.</p>
+<p>🟡 <strong>Decision Process</strong> — CEO → DAF → signature. Timeline floue.</p>
+<p>🔴 <strong>Paper Process</strong> — Étalement 3 ans, clauses sortie, DAF non qualifié.</p>
+<p>🟢 <strong>Identify Pain</strong> — Douleur réelle, chiffrée (perte de productivité, retards projets clients).</p>
+<p>🟡 <strong>Champion</strong> — Guillaume utile mais influence limitée sur la CEO et le DAF.</p>
+<p>🟡 <strong>Competition</strong> — Autre ESN identifiée mais pas qualifiée. Statu quo possible.</p>`,
+      questions:[
+        {q:"Quelle est la décision la plus risquée que vous pourriez prendre en semaine 9 ?",opts:["Demander une réunion tripartite CEO + DAF + vous","Demander à Guillaume de préparer les arguments pour le DAF","Envoyer une nouvelle proposition avec l'étalement 3 ans sans avoir rencontré le DAF","Attendre que Guillaume vous revienne avec la réponse du DAF"],c:2,e:"Envoyer une proposition révisée sans avoir rencontré le DAF, c'est travailler dans le vide. Le DAF peut avoir des objections bien au-delà du mode de paiement — clauses de sortie, certifications, assurances fournisseur. Chaque version de proposition envoyée sans qualification préalable est du temps perdu."},
+        {q:"Pour adresser le critère 'référence clients ESN' de la CEO, quelle est la meilleure approche ?",opts:["Expliquer que vous n'avez pas de référence ESN mais que votre solution s'adapte","Ignorer ce critère — le CEO était 'favorable' de toute façon","Promettre de construire une référence ESN après l'implémentation chez TechSprint","Identifier une référence sectorielle proche (ex: cabinet conseil, société de services IT) et proposer une mise en relation directe"],c:3,e:"Une mise en relation directe (témoignage client, référence call) est bien plus puissante qu'une promesse. Même si la référence n'est pas 100% identique (ESN vs société de services IT), un client qui parle en votre faveur adresse la vraie crainte de la CEO : est-ce que d'autres ont fait confiance à ce fournisseur dans un contexte similaire ?"},
+        {q:"Si la close date dans 3 semaines n'est pas tenable, quelle est la bonne communication avec votre manager ?",opts:["Maintenir la close date à 75% pour ne pas perturber le forecast","Recalibrer : close date à +6 semaines, probabilité à 45-50%, actions prioritaires DAF et référence ESN. Un forecast honnête est toujours préférable à une surprise de pipeline.","Décaler la close date de 2 semaines — c'est suffisant","Maintenir la close date mais baisser la probabilité à 60%"],c:1,e:"Un forecast honnête permet à votre manager de vous aider — mobiliser des ressources, accélérer l'accès au DAF, trouver une référence. Un forecast optimiste cache les problèmes jusqu'au moment où le deal se perd. La transparence sur les risques est une compétence professionnelle, pas un aveu de faiblesse."}
+      ]
+    }
+  },
+
+  // ═══════════════════ MODULE 14 — CERTIFICATION ═══════════════════
+  {
+    id:'certification', nav:'Certification finale', sub:'Examen — Module 14',
+    badge:'🏆 Certification', title:'Examen de certification MEDDPICC',
+    subtitle:"30 questions sur l'ensemble de la formation — des questions de compréhension, des pièges, des scénarios. Bronze, Argent ou Or : à toi de jouer.",
+    blocks:[
+      {t:'hl',v:'blue',lbl:'📋 Règles de l\'examen',body:`— <strong>31 questions</strong> couvrant toutes les dimensions MEDDPICC<br>— Questions de compréhension, pièges, scénarios réels<br>— Aucun retour en arrière — chaque réponse est définitive<br>— Résultat immédiat avec analyse détaillée<br><br><strong>Niveaux de certification :</strong><br>🥇 <strong>Or</strong> : 28-31 bonnes réponses (90%+)<br>🥈 <strong>Argent</strong> : 23-27 bonnes réponses (73-89%)<br>🥉 <strong>Bronze</strong> : 19-22 bonnes réponses (60-72%)<br>📖 <strong>À revoir</strong> : moins de 19 — reprendre les modules concernés`},
+      {t:'prose',h:'',p:`<p>Cet examen évalue ta maîtrise globale de MEDDPICC — une question par dimension, plus des cas d'intégration. Chaque question teste ta capacité à <strong>appliquer</strong> le bon raisonnement dans des situations réelles.</p><p>Prends le temps de lire chaque question. Méfie-toi des réponses qui semblent "évidemment vraies" — MEDDPICC a ses propres logiques qui contredisent parfois l'intuition commerciale classique.</p>`}
+    ],
+    quiz:[
+      {q:"[M] Un prospect dit : 'Votre solution va vraiment améliorer notre productivité.' C'est :",opts:["Une métrique valide si le prospect confirme par écrit","Une aspiration générale — il faut la convertir en chiffre : combien d'heures, combien d'euros, sur quelle période ?","Une métrique qualifiée — améliorer la productivité est un objectif mesurable","Une métrique opérationnelle — suffisante pour construire la proposition"],c:1,e:"Sans chiffre, 'améliorer la productivité' est une intention. Une métrique réelle répond à : quel baseline ? quelle cible ? quel delta ? quel horizon ? Construire cette équation avec le prospect est la condition pour que la valeur soit défendable face à l'EB."},
+      {q:"[E] Votre interlocuteur vous dit être 'autonome pour prendre cette décision'. Pour valider, vous demandez :",opts:["Vous le croyez — il connaît son organisation","'Avez-vous déjà pris ce type de décision seul par le passé ?'","'Pouvez-vous signer dès aujourd'hui ?'","'Super. Et pour un engagement de ce montant, y a-t-il d'autres validations nécessaires avant la signature ?' — sans challenger son autorité"],c:3,e:"La question 'y a-t-il d'autres validations ?' valide l'autorité réelle sans la challenger. Elle est formulée dans le sens de 'aider le processus' plutôt que 'douter de vous'. Si la personne est vraiment autonome, elle confirmera. Si non, vous découvrirez le Paper Process."},
+      {q:"[DC] Quelle est la différence entre un critère de décision explicite et implicite ?",opts:["Il n'y a pas de différence pratique","L'implicite n'existe que dans les grandes organisations","L'explicite est formalisé par le client, l'implicite est non verbalisé — les deux peuvent être décisifs et les implicites sont souvent plus lourds","L'explicite est plus important que l'implicite"],c:2,e:"Les critères implicites — 'on préfère un fournisseur français', 'le DG veut de la simplicité' — sont souvent plus déterminants que les critères formels. Ils ne seront jamais dans un RFP mais peuvent tuer un deal en fin de course si vous ne les avez pas détectés."},
+      {q:"[DP] Un commercial a 12 réunions avec un prospect en 3 mois. Le deal avance-t-il ?",opts:["Non — 12 réunions c'est trop, il faut conclure plus vite","Oui si les réunions impliquent de plus en plus de personnes","Pas nécessairement — 12 réunions sans étape formelle franchie indique un deal qui tourne en rond","Oui — 12 réunions montrent un engagement fort"],c:2,e:"L'activité n'est pas synonyme d'avancement. La vraie question : 'Quelle étape formelle du Decision Process a été franchie depuis 3 mois ?' Sans étape formelle, 12 réunions ne sont que 12 conversations qui coûtent du temps."},
+      {q:"[PP] Quelle est la meilleure définition du Paper Process ?",opts:["Tout ce qui se passe entre 'la décision d'acheter est prise' et 'le contrat est signé' — approbations, juridique, achats, DPA","La signature du contrat final","La procédure interne de sélection des fournisseurs","La négociation des termes commerciaux"],c:0,e:"Le Paper Process commence après le 'oui' de l'EB. C'est souvent là que les deals se perdent ou glissent — non parce que le client ne veut plus acheter, mais parce que le chemin vers la signature n'avait pas été anticipé."},
+      {q:"[I] Quelle est la différence entre une 'douleur' et un 'problème' en MEDDPICC ?",opts:["La douleur est physique, le problème est organisationnel","Un problème vient du client, une douleur est créée par le commercial","Un problème peut exister sans urgence d'agir. Une douleur a un coût, un risque ou une urgence qui justifient l'action maintenant.","Il n'y a pas de différence — les deux termes sont interchangeables"],c:2,e:"'Notre infra est vieille' est un problème — le client peut vivre avec. 'Notre infra vieillissante nous expose à des pénalités de 5 000€/incident sur notre contrat grand compte' est une douleur — le client doit agir."},
+      {q:"[C] Comment tester si votre contact est un vrai Champion ou seulement un coach ?",opts:["Observer s'il répond vite à vos emails","Lui demander s'il est prêt à 'soutenir votre solution'","Vérifier son titre dans l'organisation","Lui demander d'agir concrètement — organiser une réunion EB, partager une information stratégique, défendre un argument en interne. Un champion fait. Un coach promet."],c:3,e:"Un champion se teste par l'action, pas par les intentions. Les déclarations de soutien ne valent rien. Ce qui compte : fait-il ce qu'il dit ? Si oui, c'est un champion. Si non, c'est un contact agréable."},
+      {q:"[C] Vous avez identifié un concurrent direct. Quelle est votre première question ?",opts:["Depuis combien de temps travaillent-ils avec ce prospect ?","Est-ce que ce concurrent répond aux critères non-négociables du client, notamment ceux qui jouent en votre faveur ?","Combien de références ont-ils dans ce secteur ?","Quel est leur prix ?"],c:1,e:"La première étape n'est pas d'attaquer le concurrent mais de vérifier s'il répond vraiment aux critères clés. S'il ne répond pas à un critère non-négociable (hébergement France, SLA requis), le débat sur le prix ne se pose pas."},
+      {q:"[Intégration] Un deal a un Champion solide, un Pain fort et des Metrics validées. Mais le Paper Process est inconnu depuis 4 semaines. Ce deal est :",opts:["Orange global — une dimension inconnue depuis 4 semaines = une bombe à retardement sur la close date","Vert — l'essentiel est qualifié","Vert sur les dimensions qualifiées — le Paper Process est secondaire","Rouge — un inconnue invalide toutes les autres dimensions"],c:0,e:"Le principe 'one unknown = one action' s'applique strictement. 4 semaines sans qualifier le Paper Process dans un deal mature est anormal. C'est la cause principale des close dates manquées sur des deals par ailleurs bien qualifiés."},
+      {q:"[Méthode] Quelle est la règle 'zéro supposition' de MEDDPICC ?",opts:["Ne jamais prendre de décision sans consulter son manager","Si une information n'est pas prouvée par un fait vérifiable, elle reste 'inconnue' et génère une action datée — jamais une supposition optimiste","Ne jamais envoyer de proposition sans validation interne","Toujours confirmer les réunions par email"],c:1,e:"La règle zéro supposition est le cœur de MEDDPICC. Ce qui n'est pas prouvé est inconnu — et chaque inconnu génère une action datée avec un owner. Les forecasts basés sur des suppositions créent les mauvaises surprises de fin de trimestre."},
+      {q:"[E] L'EB d'une PME de 60 personnes est :",opts:["Toujours le DG","Celui qui a l'autorité réelle pour approuver la dépense et signer — titre indicatif, à vérifier","Le responsable qui pilote le projet au quotidien","Toujours le DSI sur les sujets IT"],c:1,e:"L'EB n'est pas un titre — c'est une autorité réelle. Dans une PME de 60 personnes, ce peut être le DG, le DAF, ou même un DSI avec délégation explicite. Il faut toujours vérifier qui a réellement signé les décisions d'investissement similaires par le passé."},
+      {q:"[DC] Vous avez influencé les Decision Criteria en faveur de votre solution. C'est :",opts:["De la manipulation — contraire à l'éthique commerciale","Acceptable uniquement si le client n'a pas de grille formelle","Uniquement applicable en début de cycle, pas après un RFP","Légitime si vous aidez le client à mieux structurer sa décision en mettant en valeur des critères réellement importants pour lui"],c:3,e:"Influencer les critères tôt dans le cycle est une compétence commerciale légitime — pas de la manipulation. Vous aidez le client à formaliser des priorités qui lui correspondent, en mettant en valeur celles sur lesquelles vous excellez. Le client prend une meilleure décision."},
+      {q:"[DP] Votre close date est dans 6 semaines. Vous n'avez pas construit le Reverse Timeline. Que faites-vous ?",opts:["Construire le Reverse Timeline en urgence — il peut révéler que 6 semaines est insuffisant et forcer à décaler ou à accélérer certaines étapes","Laisser la close date telle quelle — 6 semaines c'est suffisant","Demander au prospect de confirmer la close date par email","Décaler la close date de 3 mois par précaution"],c:0,e:"Le Reverse Timeline révèle souvent l'impossibilité d'une close date. 6 semaines peuvent sembler larges mais contenir : validation EB (1 sem), validation DAF (1 sem), relecture juridique (3 sem), onboarding fournisseur (1 sem). Soit 7 semaines minimum. Mieux vaut le savoir maintenant."},
+      {q:"[PP] Un client dit qu'il n'y a pas de service achats dans son organisation. Que faites-vous ?",opts:["Concluez que le Paper Process est vert","Envoyez le contrat immédiatement pour profiter de la fenêtre","Notez-le mais vérifiez quand même : qui valide les engagements > X€ ? Qui a vu les CGV du contrat ? Le DG peut toujours vouloir une validation d'un expert-comptable.","Vous le croyez — l'absence de service achats simplifie le Paper Process"],c:2,e:"L'absence de service achats ne signifie pas l'absence de Paper Process. L'expert-comptable, l'avocat, le DAF informel, le conjoint DG dans une TPE — tout peut créer du délai. La question 'entre la décision et la signature, il se passe quoi chez vous ?' reste toujours nécessaire."},
+      {q:"[I] Quelle est la valeur d'un Compelling Event pour votre deal ?",opts:["Il crée une deadline naturelle externe qui justifie d'agir maintenant plutôt que de repousser — rend le statu quo risqué sans que le commercial ait à imposer l'urgence","Il n'est utile qu'en fin de cycle pour accélérer la signature","Il crée une urgence artificielle que le client finit toujours par percevoir","Il remplace les Metrics si la douleur est forte"],c:0,e:"Un Compelling Event externe (fin de support, audit prévu, renouvellement contractuel) crée une urgence que le client ne peut pas nier. Le commercial n'a pas à 'créer' la pression — il aide le client à voir ce que lui coûte l'attente."},
+      {q:"[C/Champion] Votre champion est muté dans une autre division. Actions immédiates :",opts:["Contacter l'EB directement par email froid","Demander à votre champion sortant de vous introduire immédiatement auprès d'un autre contact et/ou de l'EB directement. Chaque jour compte avant son départ.","Attendre le recrutement de son remplaçant","Mettre le deal en pause"],c:1,e:"Chaque heure avec votre champion sortant est précieuse. Il peut vous introduire auprès de son successeur, organiser une réunion avec l'EB, ou transmettre le contexte du projet. Après son départ, toutes ces portes se ferment. Agissez immédiatement."},
+      {q:"[Intégration] La différence principale entre un forecast à 70% basé sur MEDDPICC et un forecast à 70% basé sur l'intuition :",opts:["Il n'y a pas de différence — les deux aboutissent au même résultat","MEDDPICC est plus conservateur","MEDDPICC repose sur des preuves par dimension et révèle les risques. L'intuition repose sur l'impression générale et cache les risques.","L'intuition est plus rapide et souvent aussi précise"],c:2,e:"La différence n'est pas le chiffre — c'est la qualité de l'information derrière. Un 70% MEDDPICC dit : 'EB rencontrée, Pain validé, Decision Process cartographié, Paper Process en cours'. Un 70% intuitif dit : 'le client est sympa et répond vite'. Lequel est fiable pour un forecast d'équipe ?"},
+      {q:"[M] Comment rendre une métrique 'inattaquable' lors d'un comité de décision ?",opts:["En la co-construisant avec le client — si c'est lui qui a fourni les chiffres, il ne peut pas les contredire en réunion","En la validant avec votre management avant de la présenter","En la calculant vous-même avec les données les plus récentes du secteur","En la documentant dans la proposition commerciale"],c:0,e:"Une métrique co-construite appartient au client. Si c'est le DSI qui a dit '3 pannes par an à 8 000€ chacune', ce chiffre sera défendu par le client lui-même face aux sceptiques internes. Une métrique imposée par le commercial sera toujours challengée."},
+      {q:"[DC + E] Un critère de décision est validé par le DSI mais jamais confirmé par le DG (EB). Ce critère est :",opts:["Vert si le DSI confirme que le DG est aligné","Rouge — seuls les critères de l'EB comptent","Orange — techniquement valide mais non confirmé par l'EB. Si le DG a d'autres priorités, ce critère peut être réévalué au moment de la décision.","Vert — le DSI est le mieux placé pour définir les critères techniques"],c:2,e:"Les critères doivent être validés par les personnes qui décident. Un critère technique important pour le DSI peut être secondaire pour le DG qui voit le projet sous l'angle du risque et du budget. La validation EB des critères clés est nécessaire."},
+      {q:"[Méthode] MEDDPICC est utile :",opts:["À n'importe quel stade d'un deal — y compris sur des deals existants pour identifier les gaps et les risques","Uniquement pour les nouveaux deals non encore engagés","Uniquement pour les commerciaux expérimentés","Uniquement lors des deal reviews formelles"],c:0,e:"MEDDPICC s'applique à n'importe quel stade. Sur un deal existant, la première application est de scorer les 8 dimensions et d'identifier les gaps. C'est souvent cette inspection qui révèle pourquoi un deal 'bien engagé' stagne depuis des semaines."},
+      {q:"[C/Competition] Votre prospect vous dit que le statu quo est une option sérieuse. Votre réponse :",opts:["Revenir sur le coût d'inaction et les Compelling Events — rendre le statu quo plus douloureux que le changement, avec les chiffres du client","Proposer un pilote gratuit pour réduire le risque perçu","Expliquer que votre solution est meilleure que le statu quo","Baisser votre prix pour éliminer le facteur coût"],c:0,e:"Le statu quo se bat avec le coût d'inaction. 'Ne rien faire' coûte X par mois — si ce chiffre est plus élevé que votre solution, le statu quo n'est plus rationnel. Et si un Compelling Event existe (fin de support, audit), l'inaction devient activement risquée."},
+      {q:"[PP + DP] Un deal a un Decision Process vert mais un Paper Process inconnu. La close date est réaliste ?",opts:["Oui si l'EB a confirmé verbalement son accord","Non — Decision Process et Paper Process sont deux chemins distincts. La décision d'acheter peut être prise, et le contrat peut quand même mettre 6 semaines à être signé.","Oui si c'est une PME sans processus complexe","Oui — si la décision est prise, la signature suivra rapidement"],c:1,e:"C'est précisément pourquoi le P a été ajouté à MEDDIC. Le Decision Process vert veut dire 'la décision d'acheter sera prise'. Le Paper Process inconnu veut dire 'on ne sait pas combien de temps il faudra pour signer.' Ces deux chemins peuvent diverger de plusieurs semaines."},
+      {q:"[I] 'Notre DSI veut moderniser l'infra' — c'est une douleur qualifiée ?",opts:["Oui — le DSI est le décideur technique et son désir est clair","Oui si le projet est dans le budget annuel","Oui si le DSI peut chiffrer le projet","Non — 'vouloir moderniser' est une aspiration, pas une douleur. Il manque le coût, l'urgence et l'implication des conséquences."],c:3,e:"Une aspiration n'est pas une douleur. Il faut creuser : pourquoi maintenant ? qu'est-ce qui se passe si on ne modernise pas ? quel est le coût des problèmes actuels ? Quand ces réponses sont chiffrées et partagées par l'EB, c'est une douleur qualifiée."},
+      {q:"[E + Champion] La différence entre l'EB et le Champion :",opts:["Ce sont deux noms pour le même rôle","L'EB est technique, le Champion est commercial","L'EB a l'autorité finale pour approuver la dépense. Le Champion a l'enthousiasme, l'influence et l'accès — mais n'a pas toujours le pouvoir financier de signer.","L'EB est toujours en interne, le Champion peut être externe"],c:2,e:"Un DSI peut être un excellent Champion (enthousiaste, influent, accès) sans être l'EB. Le DG peut être l'EB sans être le Champion. Les deux rôles sont complémentaires et nécessaires — manquer l'un des deux fragilise le deal différemment."},
+      {q:"[DC] Vous avez identifié 8 critères de décision explicites. Quelle est la priorité ?",opts:["Chercher les critères implicites qui manquent","Demander au prospect de les pondérer formellement","Répondre parfaitement aux 8 critères","Identifier lesquels sont réellement non-négociables (3 à 4 max) et concentrer votre différenciation là-dessus"],c:3,e:"8 critères ont rarement tous le même poids. 3-4 critères sont généralement décisifs — les autres sont des hygiènes de base. Identifier les critères différenciants et y concentrer votre énergie est plus efficace que de vouloir exceller sur tout."},
+      {q:"[Intégration] Un deal a toutes les dimensions vertes sauf la Competition (inconnu). Risque ?",opts:["Réel — un concurrent non qualifié peut avoir proposé quelque chose de disqualifiant (ex: prix 40% moins cher, référence sectorielle forte). Une inconnue en Competition peut invalider un deal par ailleurs solide.","Nul — si l'EB est alignée, la Competition n'a pas d'importance","Faible — les autres dimensions compensent","Faible si le Champion confirme votre avance"],c:0,e:"La Competition inconnu ne veut pas dire absence de compétition. Un concurrent non qualifié peut proposer quelque chose que vous ne savez pas contrer. Et le statu quo — le concurrent oublié — peut toujours être la décision par défaut si vous n'avez pas adressé l'urgence d'agir."},
+      {q:"[Méthode] Quel est le principal bénéfice d'une deal review MEDDPICC vs une deal review classique ?",opts:["Elle inspecte la qualité des preuves par dimension et génère des actions sur les gaps — pas seulement un statut de pipeline","Elle est plus appréciée des commerciaux","Elle nécessite moins de préparation","Elle prend moins de temps"],c:0,e:"Une deal review MEDDPICC ne demande pas 'où en es-tu ?' mais 'quelle preuve as-tu pour chaque dimension ?' Ce changement transforme la revue en outil de coaching et de prévision — pas de rapport d'avancement."},
+      {q:"[I + C] Votre Champion vous partage une douleur forte mais confidentiellement. Comment utilisez-vous cette information ?",opts:["Vous l'incluez dans la proposition sans la citer","Vous demandez au Champion l'autorisation de la mentionner à l'EB","Vous la mentionnez directement à l'EB pour créer l'urgence","Vous construisez des questions qui amèneront l'EB à verbaliser elle-même cette douleur — pour que ce soit le client qui la partage, pas vous qui l'imposez"],c:3,e:"Une douleur imposée par le commercial est fragile — elle peut être niée ou minimisée par l'EB. Une douleur que l'EB verbalise elle-même est inattaquable. Le rôle du commercial : construire les questions qui guident l'EB vers cette prise de conscience."},
+      {q:"[PP] Un contrat cloud doit inclure un DPA. Vous ne l'avez pas encore préparé. Risque ?",opts:["Fort — l'absence de DPA peut bloquer la signature indéfiniment si le service juridique ou le RSSI l'exige, ce qui est quasi systématique pour une solution cloud traitant des données personnelles","Faible si le client n'a pas de RSSI","Faible — le DPA se prépare après la signature","Nul — le DPA est une formalité administrative rapide"],c:0,e:"Le DPA est obligatoire par le RGPD dès qu'une solution traite des données personnelles. En cloud IT, c'est quasi systématique. Un service juridique qui découvre son absence lors de la validation finale peut bloquer la signature le temps que le document soit produit, relu et validé — 2 à 4 semaines."},
+      {q:"[Synthèse] Quelle affirmation résume le mieux l'esprit de MEDDPICC ?",opts:["MEDDPICC est surtout utile pour les deals complexes au-dessus de 50 000€","MEDDPICC est un état d'esprit de qualification permanente : chaque dimension est une question ouverte qui exige des preuves, des actions, et une surveillance continue tout au long du deal","MEDDPICC remplace l'intuition commerciale par une méthode mécanique","MEDDPICC est une checklist à compléter en début de deal pour gagner du temps"],c:1,e:"MEDDPICC n'est pas une checklist de début de cycle — c'est une inspection permanente. Un deal peut être vert en semaine 3 et orange en semaine 8 si un champion part ou si un critère évolue. La valeur de MEDDPICC est dans la rigueur continue, pas dans la complétion initiale."},
+      {q:"[Cas final] Un commercial vous dit : 'Ce deal est à 80%. L'EB est favorable, le champion est chaud, la démo s'est super bien passée.' Quelle est votre première question ?",opts:["Quelle est ta preuve que l'EB est favorable ? Tu l'as rencontré ? Elle a dit quoi exactement sur le budget et le timing ?","Qui sont les concurrents ?","Quand est la close date ?","Quel est le montant du deal ?"],c:0,e:"'L'EB est favorable' est une impression. La question de preuve est : comment sais-tu ça ? Qui te l'a dit ? As-tu rencontré l'EB directement ou c'est ce que le champion t'a transmis ? Un 80% MEDDPICC exige une preuve directe — pas une information de seconde main via le champion."}
+    ]
+  }
+];
+
+
+function renderCaseStudy(cs, modId){
+  if(!cs) return '';
+  const letters = ['A','B','C','D'];
+  const questions = cs.questions.map((q,qi) => `
+    <div class="cs-q" id="csq-${modId}-${qi}">
+      <div class="qq-num">Cas — Question ${qi+1} / ${cs.questions.length}</div>
+      <div class="qq-q">${q.q}</div>
+      <div class="qq-opts">
+        ${q.opts.map((opt,oi) => `
+          <button class="qq-opt" id="csopt-${modId}-${qi}-${oi}"
+            onclick="answerCS('${modId}',${qi},${oi},${q.c})">
+            <span class="opt-badge">${letters[oi]}</span> ${opt}
+          </button>`).join('')}
+      </div>
+      <div class="qq-expl" id="csexpl-${modId}-${qi}">${q.e}</div>
+    </div>`).join('');
+
+  return `
+    <div class="cs-wrap">
+      <div class="cs-head">${cs.label}</div>
+      <div class="cs-doc">${cs.doc}</div>
+      <div class="cs-qwrap">
+        <div class="cs-qtitle">📝 Questions sur ce cas</div>
+        ${questions}
+      </div>
+    </div>`;
+}
+
+const csAnswers = {};
+function answerCS(modId, qi, oi, correct){
+  const key = `cs-${modId}-${qi}`;
+  if(csAnswers[key] !== undefined) return;
+  csAnswers[key] = oi;
+  const opts = document.querySelectorAll(`[id^="csopt-${modId}-${qi}-"]`);
+  opts.forEach(b => b.disabled = true);
+  const chosen = document.getElementById(`csopt-${modId}-${qi}-${oi}`);
+  const correctBtn = document.getElementById(`csopt-${modId}-${qi}-${correct}`);
+  if(oi === correct){ chosen.classList.add('correct'); }
+  else { chosen.classList.add('wrong'); correctBtn.classList.add('reveal'); }
+  document.getElementById(`csexpl-${modId}-${qi}`).classList.add('show');
+  saveProgress();
+}
+
+// ═══════════════════════ STATE ═══════════════════════
+// ═══════════════════════ PERSISTENCE ════════════════
+const SAVE_KEY = 'meddpicc_progress';
+
+function saveProgress(){
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      current: state.current,
+      done: [...state.done],
+      quizDone: [...state.quizDone],
+      quizAnswers: quizAnswers,
+      csAnswers: csAnswers
+    }));
+  } catch(e) {}
+}
+
+function loadProgress(){
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if(!raw) return false;
+    const saved = JSON.parse(raw);
+    state.current = saved.current || 0;
+    state.done = new Set(saved.done || []);
+    state.quizDone = new Set(saved.quizDone || []);
+    Object.assign(quizAnswers, saved.quizAnswers || {});
+    Object.assign(csAnswers, saved.csAnswers || {});
+    return true;
+  } catch(e) { return false; }
+}
+
+function resetProgress(){
+  if(!confirm('Remettre la formation à zéro ? Ta progression sera effacée.')) return;
+  localStorage.removeItem(SAVE_KEY);
+  state.current = 0;
+  state.done = new Set();
+  state.quizDone = new Set();
+  Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
+  Object.keys(csAnswers).forEach(k => delete csAnswers[k]);
+  navigateTo(0);
+}
+
+const state = { current: 0, done: new Set(), quizDone: new Set() };
+
+// ═══════════════════════ HELPERS ═════════════════════
+function h(tag, cls, inner='', attrs=''){
+  return `<${tag} class="${cls}" ${attrs}>${inner}</${tag}>`;
+}
+
+// ═══════════════════════ RENDER BLOCKS ═══════════════
+
+function renderBlock(b){
+  switch(b.t){
+
+    case 'prose': return `
+      <div class="sec">
+        ${b.h ? `<div class="sec-h">${b.h}</div>` : ''}
+        <div class="prose">${b.p}</div>
+      </div>`;
+
+    case 'hl': return `
+      <div class="hl ${b.v}" style="margin-bottom:20px">
+        <div class="hl-label">${b.lbl}</div>
+        <div class="hl-body">${b.body}</div>
+      </div>`;
+
+    case 'cards': {
+      const cls = b.n===3 ? 'card-row c3' : 'card-row c2';
+      const cards = b.cards.map(c => `
+        <div class="card">
+          <div class="card-ico">${c.ico}</div>
+          <div class="card-name">${c.name}</div>
+          <p>${c.p}</p>
+        </div>`).join('');
+      return `<div class="sec"><div class="${cls}">${cards}</div></div>`;
+    }
+
+    case 'mmap': return `
+      <div class="sec">
+        <div class="mmap">
+          ${[['M','Metrics'],['E','Economic Buyer'],['D','Decision Criteria'],['D','Decision Process'],
+             ['P','Paper Process'],['I','Identify Pain'],['C','Champion'],['C','Competition']]
+            .map(([l,w]) => `<div class="mm-item"><div class="mm-letter">${l}</div><div class="mm-word">${w}</div></div>`)
+            .join('')}
+        </div>
+      </div>`;
+
+    case 'rag': return `
+      <div class="sec">
+        <div class="rag">
+          <div class="rag-c g"><div class="rag-dot"></div><div class="rag-lbl">Vert</div><div class="rag-desc">Prouvé & documenté</div></div>
+          <div class="rag-c a"><div class="rag-dot"></div><div class="rag-lbl">Orange</div><div class="rag-desc">Partiel — à approfondir</div></div>
+          <div class="rag-c r"><div class="rag-dot"></div><div class="rag-lbl">Rouge</div><div class="rag-desc">Non qualifié — risque</div></div>
+          <div class="rag-c u"><div class="rag-dot"></div><div class="rag-lbl">Inconnu</div><div class="rag-desc">→ Action datée obligatoire</div></div>
+        </div>
+      </div>`;
+
+    case 'scenario': return `
+      <div class="scenario">
+        <div class="scen-head">${b.lbl}</div>
+        <div class="scen-body">${b.p}</div>
+      </div>`;
+
+    case 'list': return `
+      <div class="sec">
+        <ul class="slist">
+          ${b.items.map(it => `<li><span class="ldot"></span><span><b>${it.b}</b>${it.t}</span></li>`).join('')}
+        </ul>
+      </div>`;
+
+    case 'questions': return `
+      <div class="sec">
+        <div class="sec-h">${b.h}</div>
+        <div class="q-grid">
+          ${b.qs.map(q => `
+            <div class="q-item">
+              <div class="q-ico">?</div>
+              <span>${q}</span>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    case 'expd': return `
+      <div class="sec">
+        ${b.items.map((it,i) => `
+          <div class="expd" id="expd-${state.current}-${i}">
+            <div class="expd-hdr" onclick="toggleExpd('expd-${state.current}-${i}')">
+              <span>${it.h}</span>
+              <span class="expd-arr">▼</span>
+            </div>
+            <div class="expd-body">
+              <div class="expd-inner">${it.c}</div>
+            </div>
+          </div>`).join('')}
+      </div>`;
+
+    case 'scorecard': return `
+      <div class="sec">
+        <div style="background:#ffffff;border:1px solid rgba(12,39,98,.1);border-radius:var(--radius);padding:18px 20px;box-shadow:0 1px 4px rgba(12,39,98,.05);">
+          ${[
+            {l:'M',name:'Metrics',desc:'Pannes chiffrées (3/an, ~1 000€), risque pénalités grand compte (5 000€/incident), SLA 99,5% requis. Validé DSI — pas encore confirmé par EB.',pill:'a',plbl:'Orange'},
+            {l:'E',name:'Economic Buyer',desc:'Sophie Renard (DG) identifiée. Call de 20 min effectué. Réunion de validation stratégique non encore organisée.',pill:'a',plbl:'Orange'},
+            {l:'D',name:'Decision Criteria',desc:'5 critères explicites identifiés (hébergement France, SLA, support FR, Sage 100, budget max). Critère implicite simplicité détecté.',pill:'g',plbl:'Vert'},
+            {l:'D',name:'Decision Process',desc:'Reverse timeline construit — fenêtre de décision identifiée (proposition avant 11 avril). Multi-threading à améliorer.',pill:'g',plbl:'Vert'},
+            {l:'P',name:'Paper Process',desc:'Non qualifié. Expert-comptable et avocat mentionnés mais délais non confirmés. DPA non abordé.',pill:'u',plbl:'Inconnu'},
+            {l:'I',name:'Identify Pain',desc:'Douleur forte : risque SLA grand compte (120 000€/an) + fin de support Windows. Deux compelling events identifiés.',pill:'g',plbl:'Vert'},
+            {l:'C',name:'Champion',desc:'Julien enthousiaste et aligné techniquement. Réunion EB non encore organisée — influence pas encore testée. Seul champion.',pill:'a',plbl:'Orange'},
+            {l:'C',name:'Competition',desc:"Concurrent A identifié (hors critère hébergement France). Statu quo non adressé auprès de l'EB.",pill:'a',plbl:'Orange'}
+          ].map(row => `
+            <div class="sc-row">
+              <div class="sc-l">${row.l}</div>
+              <div class="sc-content">
+                <strong>${row.name}</strong>
+                <span>${row.desc}</span>
+              </div>
+              <div style="padding-top:2px">
+                <span class="sc-pill ${row.pill}">${row.plbl}</span>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    default: return '';
+  }
+}
+
+// ═══════════════════════ RENDER QUIZ ═════════════════
+
+function renderQuiz(quiz, modId){
+  const letters = ['A','B','C','D'];
+  const questions = quiz.map((q,qi) => `
+    <div class="qq" id="qq-${modId}-${qi}">
+      <div class="qq-num">Question ${qi+1} / ${quiz.length}</div>
+      <div class="qq-q">${q.q}</div>
+      <div class="qq-opts">
+        ${q.opts.map((opt,oi) => `
+          <button class="qq-opt" id="opt-${modId}-${qi}-${oi}"
+            onclick="answerQuiz('${modId}',${qi},${oi},${q.c})"
+            data-qi="${qi}" data-oi="${oi}">
+            <span class="opt-badge">${letters[oi]}</span>
+            ${opt}
+          </button>`).join('')}
+      </div>
+      <div class="qq-expl" id="expl-${modId}-${qi}">${q.e}</div>
+    </div>`).join('');
+
+  return `
+    <div class="quiz-section">
+      <div class="quiz-header">
+        <h2>🎯 Quiz de validation</h2>
+        <p>${quiz.length} questions pour vérifier ta compréhension de ce module.</p>
+      </div>
+      <div id="quiz-body-${modId}">${questions}</div>
+      <div id="quiz-result-${modId}" style="display:none"></div>
+    </div>`;
+}
+
+// ═══════════════════════ QUIZ LOGIC ══════════════════
+
+const quizAnswers = {};
+
+function answerQuiz(modId, qi, oi, correct){
+  const key = `${modId}-${qi}`;
+  if(quizAnswers[key] !== undefined) return;
+  quizAnswers[key] = oi;
+
+  const opts = document.querySelectorAll(`[id^="opt-${modId}-${qi}-"]`);
+  opts.forEach(btn => btn.disabled = true);
+
+  const chosen = document.getElementById(`opt-${modId}-${qi}-${oi}`);
+  const correctBtn = document.getElementById(`opt-${modId}-${qi}-${correct}`);
+
+  if(oi === correct){
+    chosen.classList.add('correct');
+    document.getElementById(`qq-${modId}-${qi}`).classList.add('ok');
+  } else {
+    chosen.classList.add('wrong');
+    correctBtn.classList.add('reveal');
+    document.getElementById(`qq-${modId}-${qi}`).classList.add('ko');
+  }
+
+  document.getElementById(`expl-${modId}-${qi}`).classList.add('show');
+
+  // Check if all questions answered
+  const mod = MODULES.find(m=>m.id===modId);
+  if(!mod || !mod.quiz) return;
+  saveProgress();
+  const allDone = mod.quiz.every((_,i) => quizAnswers[`${modId}-${i}`] !== undefined);
+  if(allDone) showQuizResult(modId, mod.quiz);
+}
+
+function showQuizResult(modId, quiz){
+  let score = 0;
+  quiz.forEach((_,i)=>{
+    if(quizAnswers[`${modId}-${i}`] === quiz[i].c) score++;
+  });
+  const pct = Math.round(score/quiz.length*100);
+  const isCert = modId === 'certification';
+  let msg, col;
+  if(isCert){
+    msg = pct>=90 ? '🥇 Or — Expert MEDDPICC' : pct>=73 ? '🥈 Argent — Maîtrise solide' : pct>=60 ? '🥉 Bronze — Bases acquises' : '📖 À revoir — Reprendre les modules';
+    col = pct>=90 ? 'var(--green)' : pct>=73 ? 'var(--blue)' : pct>=60 ? 'var(--amber)' : 'var(--red)';
+  } else {
+    msg = pct===100 ? '🏆 Parfait !' : pct>=67 ? '✅ Bonne maîtrise' : '📖 À revoir';
+    col = pct===100 ? 'var(--green)' : pct>=67 ? 'var(--blue)' : 'var(--amber)';
+  }
+
+  const res = document.getElementById(`quiz-result-${modId}`);
+  res.style.display = 'block';
+  const certBadge = modId === 'certification' && pct >= 60 ? `
+    <div style="text-align:center;margin:16px 0;padding:20px;background:linear-gradient(135deg,#0C2762,#1659E4);border-radius:12px;color:#fff">
+      <div style="font-size:40px;margin-bottom:8px">${pct>=90?'🥇':pct>=73?'🥈':'🥉'}</div>
+      <div style="font-family:Outfit,sans-serif;font-size:22px;font-weight:900">${msg}</div>
+      <div style="font-size:13px;opacity:.8;margin-top:6px">MEDDPICC Certification — ${score}/31 questions</div>
+    </div>` : '';
+  res.innerHTML = `
+    <div class="quiz-result">
+      ${certBadge}
+      <div class="result-score" style="color:${col}">${score}/${quiz.length}</div>
+      <div class="result-lbl">${msg} — ${pct}% de bonnes réponses</div>
+    </div>`;
+  // Révéler le bouton Continuer qui est après l'étude de cas
+  const contBtn = document.getElementById(`continue-btn-${modId}`);
+  if(contBtn) { contBtn.style.display = 'block'; contBtn.scrollIntoView({behavior:'smooth', block:'center'}); }
+
+  state.quizDone.add(modId);
+}
+
+function markDoneAndNext(idx){
+  state.done.add(idx);
+  updateProgress();
+  saveProgress();
+  if(idx < MODULES.length-1) navigateTo(idx+1);
+}
+
+// ═══════════════════════ RENDER PAGE ═════════════════
+
+function renderWelcome(){
+  const total = MODULES.filter(m=>!m.welcome).length;
+  return `
+    <div class="welcome-wrap">
+      <div class="w-label">Sales Academy</div>
+      <h1 class="w-h1">Formation<br>MEDDPICC</h1>
+      <p class="w-desc">La méthode de qualification qui structure les meilleures équipes commerciales B2B. 12 modules progressifs, des scénarios réels, des quiz de validation — pour maîtriser MEDDPICC et l'appliquer dès demain.</p>
+      <div class="w-stats">
+        <div class="stat-box"><div class="stat-v">${total}</div><div class="stat-l">Modules</div></div>
+        <div class="stat-box"><div class="stat-v">8</div><div class="stat-l">Dimensions</div></div>
+        <div class="stat-box"><div class="stat-v">120+</div><div class="stat-l">Questions quiz</div></div>
+      </div>
+      <div class="w-modules">
+        ${[['M','Metrics'],['E','Economic Buyer'],['D','Decision Criteria'],['D','Decision Process'],
+           ['P','Paper Process'],['I','Identify Pain'],['C','Champion'],['C','Competition']]
+          .map(([l,w]) => `
+            <div class="wm-item">
+              <div class="wm-letter">${l}</div>
+              <div class="wm-text">
+                <div class="wm-name">${w}</div>
+                <div class="wm-desc">${getShortDesc(l,w)}</div>
+              </div>
+            </div>`).join('')}
+      </div>
+      <button class="btn btn-p" onclick="navigateTo(1)">Commencer la formation →</button>
+    </div>`;
+}
+
+function getShortDesc(l,w){
+  const d = {
+    'Metrics':'Quantifier la valeur business',
+    'Economic Buyer':'Accéder au vrai décisionnaire',
+    'Decision Criteria':'Comprendre les critères de choix',
+    'Decision Process':'Cartographier le chemin de décision',
+    'Paper Process':'Anticiper les étapes contractuelles',
+    'Identify Pain':'Identifier et impliquer la douleur',
+    'Champion':'Développer l\'allié interne',
+    'Competition':'Gérer toutes les alternatives'
+  };
+  return d[w] || '';
+}
+
+function renderModule(mod){
+  const blocks = (mod.blocks||[]).map(renderBlock).join('');
+  const quiz = mod.quiz ? renderQuiz(mod.quiz, mod.id) : '';
+  const caseStudy = mod.caseStudy ? renderCaseStudy(mod.caseStudy, mod.id) : '';
+  const idx = MODULES.indexOf(mod);
+  const hasPrev = idx > 0;
+  const hasNext = idx < MODULES.length - 1;
+
+  return `
+    <div class="page">
+      <div class="mod-badge">${mod.badge}</div>
+      <h1 class="page-h1">${mod.title}</h1>
+      <p class="page-sub">${mod.subtitle}</p>
+      ${blocks}
+      ${quiz}
+      ${caseStudy}
+      ${mod.quiz ? `<div id="continue-btn-${mod.id}" style="display:none;padding:24px 0 8px;text-align:right">
+        <button class="btn btn-p" onclick="markDoneAndNext(${idx})">
+          ${idx < MODULES.length - 1 ? 'Continuer →' : '✓ Terminer la formation'}
+        </button>
+      </div>` : ''}
+      <div class="page-nav">
+        <div>
+          ${hasPrev ? `<button class="btn btn-s" onclick="navigateTo(${idx-1})">← Précédent</button>` : '<span></span>'}
+        </div>
+        <div>
+          ${hasNext && !mod.quiz ? `<button class="btn btn-p" onclick="markDoneAndNext(${idx})">Suivant →</button>` : ''}
+          ${!hasNext ? `<button class="btn btn-p" onclick="markDoneAndNext(${idx})">✓ Terminer la formation</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════ NAV ═════════════════════════
+
+function buildNav(){
+  const nav = document.getElementById('nav-list');
+  let html = '';
+  MODULES.forEach((mod, i) => {
+    const cls = ['nav-item',
+      i===state.current ? 'active' : '',
+      state.done.has(i) ? 'done' : ''
+    ].filter(Boolean).join(' ');
+
+    const num = i === 0 ? '★' : (i);
+
+    html += `
+      <div class="${cls}" onclick="navigateTo(${i})" id="nav-${i}">
+        <div class="nav-dot" style="${i===0?'font-size:11px':''}">
+          ${state.done.has(i) ? '' : num}
+        </div>
+        <div class="nav-text">
+          <div class="nav-sub">${mod.sub}</div>
+          <div class="nav-name">${mod.nav}</div>
+        </div>
+      </div>`;
+  });
+  nav.innerHTML = html;
+}
+
+function showResumeToast(){
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#0C2762;color:#fff;border:1px solid rgba(107,231,221,.4);border-radius:8px;padding:12px 18px;font-size:13px;font-family:DM Sans,sans-serif;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.3);opacity:0;transition:opacity .3s';
+  t.innerHTML = '✅ Progression restaurée — bon retour !';
+  document.body.appendChild(t);
+  setTimeout(() => t.style.opacity = '1', 50);
+  setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 3000);
+}
+
+function updateProgress(){
+  const total = MODULES.length - 1;
+  const done = state.done.size;
+  const pct = Math.round(done/total*100);
+  document.getElementById('pct').textContent = pct + '%';
+  document.getElementById('pfill').style.width = pct + '%';
+}
+
+function navigateTo(idx){
+  state.current = idx;
+  const mod = MODULES[idx];
+  const content = document.getElementById('content');
+  content.innerHTML = mod.welcome ? renderWelcome() : renderModule(mod);
+  buildNav();
+  updateProgress();
+  saveProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('main').scrollTo({top:0, behavior:'smooth'});
+}
+
+// ═══════════════════════ TOGGLE ══════════════════════
+
+function toggleExpd(id){
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle('open');
+}
+
+// ═══════════════════════ INIT ════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  const resumed = loadProgress();
+  buildNav();
+  navigateTo(state.current);
+  if(resumed && state.current > 0) setTimeout(showResumeToast, 400);
+  // Si reprise, ré-appliquer les réponses quiz sur la page courante
+  if(resumed && state.current > 0){
+    const mod = MODULES[state.current];
+    if(mod && mod.quiz){
+      mod.quiz.forEach((_,qi) => {
+        const key = `${mod.id}-${qi}`;
+        const oi = quizAnswers[key];
+        if(oi !== undefined){
+          const correctBtn = document.getElementById(`opt-${mod.id}-${qi}-${mod.quiz[qi].c}`);
+          const chosenBtn = document.getElementById(`opt-${mod.id}-${qi}-${oi}`);
+          if(correctBtn && chosenBtn){
+            document.querySelectorAll(`[id^="opt-${mod.id}-${qi}-"]`).forEach(b => b.disabled = true);
+            if(oi === mod.quiz[qi].c) chosenBtn.classList.add('correct');
+            else { chosenBtn.classList.add('wrong'); correctBtn.classList.add('reveal'); }
+            const expl = document.getElementById(`expl-${mod.id}-${qi}`);
+            if(expl) expl.classList.add('show');
+          }
+        }
+      });
+      // Si quiz complet, réafficher résultat et bouton continuer
+      const allDone = mod.quiz.every((_,qi) => quizAnswers[`${mod.id}-${qi}`] !== undefined);
+      if(allDone) showQuizResult(mod.id, mod.quiz);
+    }
+  }
+});
+</script>
+</body>
+</html>
